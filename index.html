@@ -10,28 +10,28 @@ img:hover {
 .card-img-top{
   filter: grayscale(50%);
 }
-  .roundedpic {
-    border-radius: 25%;
+.roundedpic {
+  border-radius: 25%;
+}
+.socialcolor{
+  color: var(--footertextcol);
+}
+.btn-new{
+  background-color:var(--footertextcol);color: var(--backcol);
+}
+.btn-new:hover{
+  background-color:var(--posthovercol);color: white;
   }
-  .socialcolor{
-    color: var(--footertextcol);
-  }
-  .btn-new{
-    background-color:var(--footertextcol);color: var(--backcol);
-  }
-  .btn-new:hover{
-    background-color:var(--posthovercol);color: white;
-    }
-  .wrapper {
+.wrapper {
   max-width: 1024px;
   margin: 0 auto;
-  }
-  .wrapper > * {
+}
+.wrapper > * {
   background-color: transparent;
   border-radius: 5px;
   padding: 10px;
-  }
-  .wrapper {
+}
+.wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -39,69 +39,71 @@ img:hover {
   justify-content: left;
   grid-template-columns: repeat(12, [col-start] 1fr);
   grid-gap: 5px;
-  }
-  .item1 {
+}
+.item1 {
   grid-column: col-start 1 / span 3;
   grid-row: 1 / 9;
-  }
-  .item2 {
+}
+.item2 {
   grid-column: col-start 4 / span 9 ;
   grid-row: 1 / 9;
-  }
- .badge{
-    padding: 3px 8px 5px;
-    font-size: inherit;
-    font-weight: inherit;
-    background-color:var(--headbackcol);
-    border-radius: 9px;
-  }
-  .badge:hover, .badge:focus{
-    color:var(--headbackcol);
-    background-color:var(--footertextcol);
-    cursor: pointer;
-  }
-  .card{
-    color: inherit;
-    background-color:var(--headbackcol);
-    border-radius: 5px;
-    width: 50%;
-    height: 50%;
-  }
-  .modal-content{
-    background-color: var(--headbackcol);
-  }
-  input, textarea
-  {
-    background-color: var(--footertextcol);
-    width: 90%;
-  }
-  ::placeholder { 
-    color: var(--backcol);
-    opacity: 1; 
-  }
-  @media screen and (max-width: 550px) {
-    .wrapper {
+}
+.badge{
+  padding: 3px 8px 5px;
+  font-size: inherit;
+  font-weight: inherit;
+  background-color:var(--headbackcol);
+  border-radius: 9px;
+}
+.badge:hover, .badge:focus{
+  color:var(--headbackcol);
+  background-color:var(--footertextcol);
+  cursor: pointer;
+}
+.card{
+  color: inherit;
+  background-color:var(--headbackcol);
+  border-radius: 5px;
+  width: 50%;
+  height: 50%;
+}
+.modal-content{
+  background-color: var(--headbackcol);
+}
+input, textarea
+{
+  background-color: var(--footertextcol);
+  width: 90%;
+}
+::placeholder { 
+  color: var(--backcol);
+  opacity: 1; 
+}
+@media screen and (max-width: 550px) {
+.wrapper {
   justify-content: center;
-  }
-  .item1{
-    max-height: 235px;
-  }
-  .item2{
-    text-align: center;
-  }
-  .card{
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
-    width: 100%;
-    height: 100%;
-  }
+}
+.item1{
+  max-height: 235px;
+}
+.item2{
+  text-align: center;
+}
+.card{
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  width: 100%;
+  height: 100%;
+}
 }
 </style>
-<p style="margin-bottom:-1cm;"></p>
+
+
+<p style="margin-bottom:-1.5cm;"></p>
 <div class="wrapper">
     <div class="item1">
-      <center><p><img class = "roundedpic" src="assets/img/profile.png" alt="Profile pic" style="width:220px;border:0px solid black" data-toggle="tooltip" data-placement="auto" title="Yup, thats me"></p></center>
+      <center><p><img class = "roundedpic" src="assets/img/mainpic.jpg" alt="Profile pic" style="width:100%px;border:0px solid black" data-toggle="tooltip" data-placement="auto" title="Yup, thats me"></p></center>
     </div>
   <div class="item2">
     <a style="font-size:35px;">Varlam Kutateladze</a> <br>
@@ -130,7 +132,9 @@ img:hover {
 
     <span style="display:block; height: 15px;"></span>
 
-    <a>I am on the Job Market 2020-2021!</a>
+    <div class="typewriter">
+      <div class="typewriter-text">I am on the Job Market 2020-2021!</div>
+    </div>
   </div>
 </div>
 
@@ -170,9 +174,9 @@ img:hover {
 <div>
   <i class="fas fa-check"></i><b> BIO</b><span style="display:block; height: 15px;"></span>
 
-  PhD researcher with 3+ years of experience in predictive modeling and statistical inference
+  PhD researcher with 3+ years' experience in predictive modeling and statistical inference
   using data science & machine learning methods. Also
-  3+ years of teaching experience in econometrics, statistics, etc.
+  3+ years' teaching experience in econometrics, statistics, etc.
 
   <span style="display:block; height: 15px;"></span>
   <i class="fas fa-check"></i><b> Research area</b><span style="display:block; height: 15px;"></span>

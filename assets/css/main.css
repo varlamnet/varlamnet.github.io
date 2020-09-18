@@ -4,6 +4,31 @@ layout: null
 
 @import url("pygment_highlights.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.typewriter {
+	display: inline-block;
+}
+.typewriter-text {
+  display: inline-block;
+  position: relative;
+  top: 50%;  
+  margin: 0 auto;
+  overflow: hidden;
+  /* letter-spacing: 2px; */
+  animation: typing 1s steps(30, end), blink .75s step-end infinite;
+  white-space: nowrap;
+  border-right: 2px solid var(--footertextcol);
+  box-sizing: border-box;
+}
+@keyframes typing {
+    from {width: 0%}
+    to {width: 100%}
+}
+@keyframes blink {
+    from, to {border-color: transparent}
+    50% {border-color: var(--footertextcol);}
+}
+
 .fa {
   font-size: 30px;
   cursor: pointer;
@@ -397,7 +422,7 @@ html[data-theme="dark"] {
   }
   
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.125rem;
   color: var(--bodytextcol);
   /* position: relative; */
