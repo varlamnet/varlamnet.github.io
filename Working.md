@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Research
-subtitle: Working Papers
+subtitle: 
 ---
 
 <style>
@@ -29,23 +29,28 @@ grid-template-columns: repeat(12, [col-start] 1fr);
 grid-gap: 5px;
 }
 .item1 {
-grid-column: col-start 1 / span 12;
+grid-column: col-start 1 / span 9;
+grid-row: 1/2;
+
 }
 .item2 {
-grid-column: col-start 1 / span 11 ;
+grid-column: col-start 1 / span 12 ;
 grid-row: 2 / 7;
 padding: 15px;
 }
 .item3 {
-grid-column: col-start 12 / span 1;
-grid-row: 2/7;
+grid-column: col-start 10 / span 3;
+grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } 
 </style>
 
 
 <div class="wrapper">
   <div class="item1">
-    <b>Author, "Paper Title "</b> <i>(submitted to Journal)</i>
+    <b>Author, "Paper Title"</b> <i>(submitted to Journal)</i>
   </div>
   <div class="item2">
     <p class="dropcap">S</p>ample abstract goes here Sample abstract goes here Sample abstract goes here Sample abstract goes here 
@@ -56,7 +61,6 @@ grid-row: 2/7;
   <div class="item3">
     <center> 
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" title="1-page CV"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <span style="display:block; height: 7px;"></span>
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" title="1-page CV"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
     </center>
   </div>
@@ -67,7 +71,7 @@ grid-row: 2/7;
 
 <div class="wrapper">
   <div class="item1">
-    <b>Author, "Paper Title "</b>
+    <b>Author, "Paper Title Paper Title Paper Title Paper Title Paper Title Paper Title Paper Title Paper Title"</b>
   </div>
   <div class="item2">
     <p class="dropcap">A</p>bstract goes here Sample abstract goes here Sample abstract goes here Sample abstract goes here 
@@ -77,9 +81,7 @@ grid-row: 2/7;
   </div>
   <div class="item3">
     <center> 
-      <span style="display:block; height: 15px;"></span>
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" title="1-page CV"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <span style="display:block; height: 7px;"></span>
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" title="1-page CV"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
     </center>
   </div>
