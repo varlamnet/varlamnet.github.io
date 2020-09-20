@@ -72,7 +72,7 @@ subtitle: Instructor / TA
 
   <div class="card" style = "font-size:15pt">
     <center> 
-      <b> Teaching Assistant ${~\cdotp~}$ Statistics ${~\cdotp~}$ Fall 2020 ${~\cdotp~}$ Score: 6.5/7.0</b>
+      <b> Teaching Assistant ${~\cdotp~}$ Statistics ${~\cdotp~}$ Fall 2019 ${~\cdotp~}$ Score: 6.5/7.0</b>
     </center> 
   <hr class="new1" style="border-top: 2px solid grey">
   <a style = "font-size:12pt">"Varlam is extremely helpful and made sure that we got the labs done on time explaining everything thoroughly and even going beyond by teaching us specific shortcuts to make our life easier."</a><br/>
