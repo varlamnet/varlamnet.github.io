@@ -130,7 +130,7 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
   <div class="item3">
     <center> 
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check later!"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/covid_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Available!"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="/pdfs/Covid_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Available!"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
     </center>
   </div>
 </div>
