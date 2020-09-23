@@ -17,7 +17,7 @@ share-links-active:
   linkedin: true
 url-pretty: "varlam.net"
 link-tags: true
-excerpt_length: 50
+excerpt_length: 0
 navbar-col: "
 navbar-text-col: "
 navbar-border-col: "

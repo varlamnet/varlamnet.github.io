@@ -5,6 +5,26 @@ layout: null
 @import url("pygment_highlights.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* alert box */
+.alert {
+  padding: 20px;
+  background-color: rgba(255, 68, 0, 0.8);
+  color: white;
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.closebtn:hover {
+  color: black;
+}
+
 /* button */
 .socialcolor{
   color: var(--footertextcol);
@@ -867,12 +887,14 @@ footer .footer-custom-content {
 
 .post-preview {
   padding: 1.25rem 0;
-  border-bottom: 1px solid var(--postlinecol);
+  padding-bottom: 0px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.7);
 }
 
 @media (min-width: 768px) {
   .post-preview {
     padding: 1rem 0;
+    padding-bottom: 0px;
   }
 }
 
@@ -914,15 +936,14 @@ footer .footer-custom-content {
 .post-entry-container {
   display: inline-block;
   width: 100%;
+  height: 1px;
 }
 .post-entry {
   width: 100%;
 }
 .post-image {
   float: right;
-  height: 8.5rem;
-  width: 8.5rem;
-  margin-top: -2.5rem;
+  margin-top: -8.5rem;
   filter: grayscale(90%);
 }
 .post-image:hover {
@@ -935,6 +956,12 @@ footer .footer-custom-content {
 }
 .post-preview .post-read-more {
   font-weight: 800;
+}
+
+@media (max-width: 600px) {
+.post-image img{
+  display: none;
+}
 }
 
 @media (min-width: 768px) {

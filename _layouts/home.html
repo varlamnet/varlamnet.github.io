@@ -45,11 +45,6 @@ layout: page
         </a>
       </div>
       {% endif %}
-      <div class="post-entry">
-        {% assign excerpt_length = site.excerpt_length | default: 50 %}
-        {{ post.excerpt | strip_html | xml_escape | truncatewords: excerpt_length }}
-        {% assign excerpt_word_count = post.excerpt | number_of_words %}
-      </div>
     </div>
 
     {% if post.tags.size > 0 %}
