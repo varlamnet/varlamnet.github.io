@@ -5,6 +5,18 @@ layout: null
 @import url("pygment_highlights.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* button */
+.socialcolor{
+  color: var(--footertextcol);
+}
+.btn-new{
+  background-color:var(--footertextcol);color: var(--backcol);
+}
+.btn-new:hover{
+  background-color:var(--posthovercol);color: white;
+}
+
+/* typewriter */
 .typewriter {
 	display: inline-block;
 }
@@ -29,6 +41,7 @@ layout: null
     50% {border-color: var(--footertextcol);}
 }
 
+/* icons */
 .fa {
   font-size: 30px;
   cursor: pointer;
