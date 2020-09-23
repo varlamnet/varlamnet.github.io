@@ -121,7 +121,7 @@ subtitle: Instructor / TA
 
   <div class="card" style = "font-size:13pt">
     <center> 
-      <b> PhD Teaching Assistant ${~\cdotp~}$ Advanced Econometrics ${~\cdotp~}$ Fall 2019 ${~\cdotp~}$ Score: 6.69/7.0</b>
+      <b> Teaching Assistant ${~\cdotp~}$ Advanced Econometrics (PhD) ${~\cdotp~}$ Fall 2019 ${~\cdotp~}$ Score: 6.69/7.0</b>
     </center> 
   <hr class="new1" style="border-top: 2px solid grey">
   <a style = "font-size:12pt">"He is good at helping us forming a structure of all materials covered in lectures."</a><br/>
