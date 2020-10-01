@@ -87,3 +87,41 @@ $$= h^4\lambda_1+\frac{1}{nh}\lambda_2 $$
 - Substitute $$h_{opt}$$ into IMSE and minimize wrt to $$K(\psi)$$ s.t. $$\int K{\psi} d\psi =1$$ and $$\int \psi^2 K{\psi} = 1$$ to obtain\\
 	$$ \displaystyle K^{opt}(\psi)=\begin{cases} \frac{3}{4}(1-\psi^2), |\psi|\le 1 \\ 0, \text{ o/w} \end{cases}, \text{ Bartlett's (Epanechnikov's) Kernel}$$
 
+# Bandwidth Estimation
+
+Note that $\lambda_1$ is unknown because of unknown $f(x)$, hence to obtain $h$ can use one of the following methods.
+
+- **Ad-hoc Method**\\
+Assume $f(x) \sim N(0, \sigma_x^2)$. For $K(\psi)$ normal, it can be shown that $h_{opt}=1.06\sigma_x n^{-1/5}$
+
+- **Plug-in Method**\\
+Repeat the following loop until the difference becomes small
+\begin{enumerate}
+  - Start with ad-hoc $h_{opt}$ and estimate $\hat{f}(x)$
+  - Calculate $\hat{\lambda}_1$ using $\hat{f}^{(2)}(x)$ instead of $f^{(2)}(x)$ 
+  - Use $\hat{\lambda}_1$ to calculate new $\hat{h}_{new}$
+  - Repeat the loop using the last $\hat{h}_{new}$ obtained
+\end{enumerate}
+
+- **ISE (Cross-Validation) Method**\\
+Minimize ISE($h$) wrt $h$ (use grid search)
+
+  $$\displaystyle
+\text{ISE}(h)= \int_{x} (\hat{f}(x) - f(x))^2 dx $$
+$$\displaystyle  = \int_{x} \hat{f}^2(x) dx +\underbrace{\int_{x} f^2(x) dx}_{\text{can be dropped}} - 2\int_{x} \hat{f}(x)f(x) dx \\
+= \int_{x} \hat{f}^2(x) dx - 2\E\hat{f}(x) 
+= \int_{x} \hat{f}^2(x) dx - 2 \frac{1}{n}\sum_{i=1}^{n}\hat{f}(x_i) 
+$$ <i class="far fa-arrow-alt-circle-right"></i>
+
+
+  - $$\hat{f}(x)=\dfrac{1}{nh}\sum_{i=1}^{n} \mathbb{K}(\dfrac{x_i-x}{h})$$
+
+  - $$\hat{f}^2(x)=\dfrac{1}{n^2h^2}\sum_{i=1}^{n}\sum_{j=1}^{n} \mathbb{K}(\dfrac{x_i-x}{h}) \mathbb{K}(\dfrac{x_j-x}{h}) $$
+
+
+<i class="far fa-arrow-alt-circle-right"></i>
+$$\displaystyle
+\frac{1}{n^2h^2}\sum_{i=1}^{n}\sum_{j=1}^{n} \int_{x} \mathbb{K}(\frac{x_i-x}{h})\mathbb{K}(\dfrac{x_j-x}{h})dx - \frac{2}{n^2h}\sum_{i=1}^{n}\sum_{j=1}^{n} \mathbb{K}(\frac{x_i-x_j}{h})\\
+=\frac{1}{n^2h^2}\sum_{i=1}^{n}\sum_{j=1}^{n} \int_{x} \mathbb{K}(\frac{x_i-x}{h})\mathbb{K}(\dfrac{x_j-x}{h})dx -
+\frac{2}{n(n-1)h} \underset{i\ne j}{\sum^{n}\sum^{n}} \mathbb{K}(\frac{x_i-x_j}{h})
+$$
