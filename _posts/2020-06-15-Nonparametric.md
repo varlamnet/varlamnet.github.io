@@ -14,6 +14,7 @@ $$\newcommand{\d}{\overset{d}{\to}}$$
 $$\DeclareMathOperator*{\argmin}{arg\,min}$$
 $$\DeclareMathOperator*{\argmax}{arg\,max}$$
 $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
+\newtheorem*{lemma}{Lemma} %Stars mean no numbering
 <!-- MathJAx End -->
 <p style="margin-bottom:-2cm;"></p>
 
@@ -125,3 +126,42 @@ $$\displaystyle
 =\frac{1}{n^2h^2}\sum_{i=1}^{n}\sum_{j=1}^{n} \int_{x} \mathbb{K}(\frac{x_i-x}{h})\mathbb{K}(\dfrac{x_j-x}{h})dx -
 \frac{2}{n(n-1)h} \underset{i\ne j}{\sum^{n}\sum^{n}} \mathbb{K}(\frac{x_i-x_j}{h})
 $$
+
+# Asymptotic Properties of $\hat{f}$
+
+{: .box-success}
+Under assumptions (A1), (A4), (A8) and (A9) we have\\
+$$\displaystyle
+\frac{1}{h} \E K^r \left( \frac{x_1-x}{h} \right) = \int K^r(\psi) f(h\psi +x) d\psi 
+\to f(x) \int K^r (\psi) d\psi \text{ as } n \to \infty$$ 
+
+
+
+- **Asymptotic Mean**  <span style="display:block; height: 10px;"></span>
+$$\displaystyle 
+\E \hat{f}(x) = \E z_1  = \frac{1}{h} \E K(\frac{x_i-x}{h}) \overset{Lemma}{\to} f(x) \int_{\psi} K(\psi) d \psi = f(x) \text{ as } n\to \infty $$
+
+- **Asymptotic Variance** <span style="display:block; height: 10px;"></span>
+$$\displaystyle 
+\mathbb{V} (\hat{f}(x)) = \mathbb{V} (\frac{1}{n} \sum_{i=1}^{n} z_i)$$
+$$= \frac{1}{n} (\E z_1^2 -(\E z_1)^2) = \frac{1}{nh} \left[ \frac{1}{h} \E K^2(\frac{x_i-x}{h})\right] - \frac{1}{n}(\E z_1)^2 $$
+$$nh \mathbb{V} (\hat{f}(x)) = \frac{1}{h}\E K^2(\frac{x_i-x}{h}) - h (\E z_1)^2 \overset{Lemma}{\to} f(x) \int K^2 (\psi) d\psi - 0 \cdot f^2(x)$$
+$$= f(x) \int K^2 (\psi) d\psi  \text{ as } n\to \infty $$
+
+- **Weak Consistency** <span style="display:block; height: 10px;"></span>
+We have that MSE$$(\hat{f}(x)) \to 0$$ as $$n \to \infty$$. Use Chebyshev inequality to show that
+$$\displaystyle P[|\hat{f} - f|\ge \epsilon] \le \frac{\E(\hat{f}-f)^2}{\epsilon^2}$$, and hence
+$$\displaystyle P[|\hat{f} - f|\le \epsilon] \to 1$$, i.e. $$\displaystyle p \lim_{n \to n} \hat{f} = f$$
+
+- **Asymptotic Normality** <span style="display:block; height: 10px;"></span>
+$$\displaystyle z \equiv \frac{\hat{f}(x) - \E \hat{f}(x)}{\sqrt{\mathbb{V} (\hat{f}(x))}}$$
+$$= \frac{\frac{1}{n} \sum_{i=1}^{n}(z_i - \E z_i)}{\sqrt{\frac{1}{n} \mathbb{V}(z_1)}} $$
+$$=\sum_{i=1}^{n} L_{n,i}, \text{ where } L_{n,i} \equiv \frac{1}{n} \frac{z_i - \E z_i}{\frac{1}{n} V(z_1)} $$
+
+
+
+### Lyapunov CLT 
+
+{: .box-success}
+Let $$\{ X_{n,i}\}$$ be a sequence of independent (not necessarily identically distributed) RVs, with $$\E X_{n,i} = \mu_{n,i}$$ and $$\mathbb{V} (X_{n,i}) = \sigma^2_n < \infty$$. Denote $$ \displaystyle L_{n,i} \equiv \frac{X_{n,i} - \mu_{n,i}}{\sigma_n}$$. \\
+If for some $$\delta>0$$ the condition $$\lim_{n \to \infty} \sum_{i=1}^{n} \E \abs{L_{n,i}}^{2+\delta}=0$$ is satisfied, then $$ \displaystyle \sum_{i=1}^{n} L _{n,i} \overset{d}{\to} \mathcal{N}(0,1)$$
