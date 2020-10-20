@@ -22,7 +22,6 @@ grid-gap: 5px;
 .item1 {
 grid-column: col-start 1 / span 9;
 grid-row: 1/2;
-
 }
 .item2 {
 grid-column: col-start 1 / span 12 ;
@@ -31,6 +30,17 @@ padding: 15px;
 }
 .item3 {
 grid-column: col-start 10 / span 3;
+grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+.item11 {
+grid-column: col-start 1 / span 7;
+grid-row: 1/2;
+}
+.item33 {
+grid-column: col-start 8 / span 5;
 grid-row: 1/2;
   display: flex;
   justify-content: center;
@@ -72,8 +82,8 @@ grid-row: 1/2;
   </div>
   <div class="item3">
     <center> 
-      <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Available!"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check later!"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="/pdfs/JMP.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
+      <a href="/pdfs/JMP_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Short version"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
     </center>
   </div>
 </div>
@@ -87,7 +97,7 @@ grid-row: 1/2;
   </div>
   <div class="item2">
 
-Covariance matrix estimates are required in a wide range of applied problems in multivariate data analysis, including portfolio and risk management in finance, factor models and testing in economics, and graphical models and classification in machine learning.
+ <p class="dropcap">C</p>ovariance matrix estimates are required in a wide range of applied problems in multivariate data analysis, including portfolio and risk management in finance, factor models and testing in economics, and graphical models and classification in machine learning.
 In modern applications, where often the model dimensionality is comparable or even larger than the sample size, 
 the classical sample covariance estimator lacks desirable properties, such as consistency, and suffers from eigenvalue spreading.
 In recent years, improved estimators have been proposed based on the idea of regularization.  Specifically, such estimators, known as rotation-equivariant estimators, shrink the sample eigenvalues, while keeping the eigenvectors of the sample covariance estimator. In high dimensions, however, the sample eigenvectors will generally be strongly inconsistent, rendering eigenvalue shrinkage estimators suboptimal. 
@@ -104,8 +114,7 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
   </div>
   <div class="item3">
     <center> 
-      <a href="/pdfs/JMP.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check later!"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check later!"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="/pdfs/Cov_abstract.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Paper available soon!"><i class="fas fa-file-pdf fa-lg"></i><b> Abstract</b></a> 
     </center>
   </div>
 </div>
@@ -113,11 +122,11 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
 <span style="display:block; height: 0px;"></span>
 
 <div class="wrapper">
-  <div class="item1">
+  <div class="item11">
     <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> (with E. Seregina)
   </div>
   <div class="item2">
-    <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated and real, laboratory data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
+    <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
 
     <b>Keywords:</b> 
     <span class="badge">Pooled Testing</span>
@@ -127,10 +136,11 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
     <span class="badge">Sensing Matrix</span>
     <span class="badge">SARS-CoV-2</span>
   </div>
-  <div class="item3">
+  <div class="item33">
     <center> 
-      <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check later!"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/Covid_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Available!"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="/pdfs/Covid_paper.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
+      <a href="/pdfs/Covid_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="/pdfs/Covid_poster.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Poster</b></a>
     </center>
   </div>
 </div>
