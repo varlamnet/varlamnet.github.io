@@ -114,7 +114,7 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
   </div>
   <div class="item3">
     <center> 
-      <a href="/pdfs/Cov_abstract.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Paper available soon!"><i class="fas fa-file-pdf fa-lg"></i><b> Abstract</b></a> 
+      <a href="/pdfs/Cov_abstract.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Paper available soon!"><i class="fas fa-file-pdf fa-lg"></i><b> Abstract</b></a>  
     </center>
   </div>
 </div>
