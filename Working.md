@@ -66,7 +66,7 @@ grid-row: 1/2;
 
 <div class="wrapper">
   <div class="item11">
-    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b> <i>(submitted)</i>
+    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b> <i>(JMP, submitted)</i>
   </div>
   <div class="item2">
     <p class="dropcap">F</p>actor modeling is a powerful statistical technique that permits to capture the common dynamics in a large panel of data with a few latent variables, or factors, thus alleviating the curse of dimensionality. Despite its popularity and widespread use for various applications ranging from genomics to finance, this methodology has predominantly remained linear. This study estimates factors nonlinearly through the kernel method, which allows flexible nonlinearities while still avoiding the curse of dimensionality. We focus on factor-augmented forecasting of a single time series in a high-dimensional setting, known as diffusion index forecasting in macroeconomics literature. Our main contribution is twofold. First, we show that the proposed estimator is consistent and it nests linear PCA estimator as well as some nonlinear estimators introduced in the literature as specific examples. Second, our empirical application to a classical macroeconomic dataset demonstrates that this approach can offer substantial advantages over mainstream methods. <br> <br>
