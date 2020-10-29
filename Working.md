@@ -65,7 +65,7 @@ grid-row: 1/2;
 
 
 <div class="wrapper">
-  <div class="item1">
+  <div class="item11">
     <b>"The Kernel Trick for Nonlinear Factor Modeling"</b> <i>(submitted)</i>
   </div>
   <div class="item2">
@@ -80,10 +80,11 @@ grid-row: 1/2;
     <span class="badge">Econometric models </span>
     
   </div>
-  <div class="item3">
+  <div class="item33">
     <center> 
       <a href="/pdfs/JMP.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
       <a href="/pdfs/JMP_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Short version"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
+      <a href="https://drive.google.com/file/d/1XT9-gnNdrSYtsPTP0-95ULq01hxgO0h5/view?usp=sharing" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Video"><i class="fas fa-video fa-lg"></i></a>
     </center>
   </div>
 </div>
