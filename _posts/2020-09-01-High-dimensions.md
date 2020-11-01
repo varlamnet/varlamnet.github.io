@@ -6,13 +6,13 @@ thumbnail-img: assets/img/cov.png
 comments: false
 ---
 <!-- MathJAx Import -->
-$$\newcommand{\abs}[1]{\left\lvert#1\right\rvert}$$
+<!-- $$\newcommand{\abs}[1]{\left\lvert#1\right\rvert}$$ -->
 $$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$$
-$$\newcommand{\inner}[1]{\left\langle#1\right\rangle}$$
-$$\newcommand{\as}{\overset{a.s.}{\to}}$$
-$$\newcommand{\d}{\overset{d}{\to}}$$
-$$\DeclareMathOperator*{\argmin}{arg\,min}$$
-$$\DeclareMathOperator*{\argmax}{arg\,max}$$
+<!-- $$\newcommand{\inner}[1]{\left\langle#1\right\rangle}$$ -->
+<!-- $$\newcommand{\as}{\overset{a.s.}{\to}}$$ -->
+<!-- $$\newcommand{\d}{\overset{d}{\to}}$$ -->
+<!-- $$\DeclareMathOperator*{\argmin}{arg\,min}$$ -->
+<!-- $$\DeclareMathOperator*{\argmax}{arg\,max}$$ -->
 $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
 <!-- MathJAx End -->
 <p style="margin-bottom:-2cm;"></p>
@@ -49,10 +49,10 @@ Eigenvectors chosen with the first element positive.
 # Clasical Regime
 In a classical regime, $S$ is a very good estimator (Anderson 1963, Van der Vaart 2000): <span style="display:block; height: 10px;"></span>
 <i class="fas fa-check-circle"></i> Unbiased <i class="fas fa-caret-right"></i> &nbsp; $\E(S) = \Sigma.$ \\
-<i class="fas fa-check-circle"></i> Strongly consistent <i class="fas fa-caret-right"></i> &nbsp; $S \as \Sigma$ as $n\to\infty.$\\
-<i class="fas fa-check-circle"></i> Eigenvalues converge <i class="fas fa-caret-right"></i> &nbsp; $\lambda_j \as \ell_j$ as $n\to\infty, \quad j=1,\ldots,p.$\\
+<!-- <i class="fas fa-check-circle"></i> Strongly consistent <i class="fas fa-caret-right"></i> &nbsp; $S \as \Sigma$ as $n\to\infty.$\\ -->
+<!-- <i class="fas fa-check-circle"></i> Eigenvalues converge <i class="fas fa-caret-right"></i> &nbsp; $\lambda_j \as \ell_j$ as $n\to\infty, \quad j=1,\ldots,p.$\\ -->
 <i class="fas fa-check-circle"></i> Asymptotically normal eigenvalues <i class="fas fa-caret-right"></i> &nbsp; $$ \sqrt{n}(\lambda_i-\ell_i) \overset{d}{\to} \mathcal{N}(0,2\ell_i^2), \quad j=1,\ldots,p.$$\\
-<i class="fas fa-check-circle"></i> Eigenvectors converge <i class="fas fa-caret-right"></i> &nbsp; $\mathrm{v}_j \as \mathrm{u}_j$ as $n\to\infty, \quad j=1,\ldots,p.$
+<!-- <i class="fas fa-check-circle"></i> Eigenvectors converge <i class="fas fa-caret-right"></i> &nbsp; $\mathrm{v}_j \as \mathrm{u}_j$ as $n\to\infty, \quad j=1,\ldots,p.$ -->
 
 <i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <em>None of this holds in high dimensions</em> <i class="fas fa-exclamation-triangle" style="color:#f44336"></i>
 <span style="display:block; height: 10px;"></span>
@@ -117,7 +117,7 @@ that is, the singular values of a random normal square matrix lie on a quarter c
 #### Bai & Yin's (1993) Law
 Also when $\Sigma = I_p$ and $\gamma \le 1$, the largest and smallest eigenvalues converge almost surely to the corresponding boundaries of the support, 
 
-$$\lambda_1 \as \lambda_+ \quad \text{and} \quad \lambda_p \as \lambda_-.$$
+<!-- <!-- $$\lambda_1 \as \lambda_+ \quad \text{and} \quad \lambda_p \as \lambda_-.$$ --> -->
 
 Notice that the larger is $\gamma$, the wider is the spreding and the stronger is the eigenvalues bias! This phenomenon is very general and is not limited to the identity case.
 
@@ -181,10 +181,10 @@ The exact asymptotic d'n is also known for both cases!
 Below the BBP transition point the top eigenvalues are distributed with <b>Tracy-Widom d'n</b> with rate $n^{2/3}$, above with Normal with rate $n^{1/2}:$
 
 {: .box-success}
-$$n^{2/3}\lambda_1 \d TW_1 \left(\lambda_+, \; \left(\frac{\lambda_+}{\gamma^{1/4}}\right)^{4/3} \right) \quad \text{if} \; \ell_j < \lambda_+^{1/2}$$
+$$n^{2/3}\lambda_1 \overset{d}{\to} TW_1 \left(\lambda_+, \; \left(\frac{\lambda_+}{\gamma^{1/4}}\right)^{4/3} \right) \quad \text{if} \; \ell_j < \lambda_+^{1/2}$$
 
 {: .box-success}
-$$n^{1/2} \lambda_1 \d \mathcal{N}\left( \ell_j + \gamma \frac{\ell_j}{\ell_j-1}, \; 2\ell_j^2 \left(1-\frac{\gamma}{(\ell_j-1)^2} \right)\right) \quad \text{if} \; \ell_j > \lambda_+^{1/2}$$
+$$n^{1/2} \lambda_1 \overset{d}{\to} \mathcal{N}\left( \ell_j + \gamma \frac{\ell_j}{\ell_j-1}, \; 2\ell_j^2 \left(1-\frac{\gamma}{(\ell_j-1)^2} \right)\right) \quad \text{if} \; \ell_j > \lambda_+^{1/2}$$
 
 
 That is, if the true spikes are not large enough, the sample eigendistribution will look like that of $\Sigma = I_p$, i.e. according to MP d'n.
@@ -197,14 +197,14 @@ Johnstone and Lu (2004) showed that when $$p/n \to \gamma \in (0,\infty)$$, the 
 Their Theorem 4 says exactly how bad this inconsistency is
 
 {: .box-success}
-$$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as 
+<!-- $$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as  -->
 \begin{cases} 
     0, \quad & \ell_j < \lambda_+^{1/2}, \\
     \frac{1-\gamma/(\ell_j-1)^2}{1+\gamma/(\ell_j-1)}, \quad & \ell_j > \lambda_+^{1/2},  
 \end{cases}$$
 
 {: .box-success}
-$$\abs{\langle \widehat{\mathrm{v}}_j, \mathrm{v}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.$$
+<!-- $$\abs{\langle \widehat{\mathrm{v}}_j, \mathrm{v}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.$$ -->
 
 In the special case where $$\Sigma = I$$ and the $$X_{ij}$$ are iid standard (real or complex) Gaussian random variables, it is known that the matrix of sample eigenvectors is Haar distributed.
 <hr class="new1" style="border-top: 1px solid grey"> 
