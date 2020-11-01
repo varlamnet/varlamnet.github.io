@@ -314,7 +314,7 @@ html[data-theme="light"] {
 }
 
 .highlight .hll { background-color: var(--c1) }
-.highlight  { background: var(--c2); color: var(--c3)}
+.highlight  { background: transparent; color: var(--c3)} /* CHANGED TO TRANSPARENT */
 .highlight .c { color: var(--c4); font-style: italic } /* Comment */
 .highlight .err { color: var(--c5); background-color: var(--c6); border: 1px solid var(--c7) } /* Error */
 .highlight .k { color: var(--c8); font-weight: bold } /* Keyword */

@@ -446,7 +446,11 @@ html[data-theme="dark"] {
     --tagscol: #808080;
 	}
 }
-
+.in{  /* for inline code*/
+  font-size:1rem;
+  color: var(--bodytextcol);
+  background-color: var(--codegradcol1);
+}
 .dropcap {
   float: left;
   font-size: 400%;
