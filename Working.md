@@ -82,7 +82,7 @@ grid-row: 1/2;
   </div>
   <div class="item33">
     <center> 
-      <a href="/pdfs/JMP.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
+      <a href="https://arxiv.org/pdf/2103.01266.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
       <a href="/pdfs/JMP_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Short version"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
       <a href="https://drive.google.com/file/d/1XT9-gnNdrSYtsPTP0-95ULq01hxgO0h5/view?usp=sharing" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Video"><i class="fas fa-video fa-lg"></i></a>
     </center>
@@ -124,7 +124,7 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
 
 <div class="wrapper">
   <div class="item11">
-    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> (with E. Seregina)
+    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> with E. Seregina, <i>Forthcoming in Journal of Data Science</i>
   </div>
   <div class="item2">
     <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
