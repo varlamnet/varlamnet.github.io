@@ -199,9 +199,7 @@ Python side projects related to AI/ML/DL
 
 <div class="card-deck">
   <div class="card">
-    <a href="https://torchstyle.herokuapp.com/">
-    <img src="assets/img/capitol.gif" class="card-img-top" style="cursor:pointer">
-    </a>
+    <img src="assets/img/capitol.gif" class="card-img-top" data-toggle="modal" data-target="#Transfer" style="cursor:pointer">
     <div class="card-body">
       <h3 class="card-title">Neural Transfer</h3>
       <p class="card-text">PyTorch Edition</p>
@@ -209,7 +207,7 @@ Python side projects related to AI/ML/DL
   </div>
   <div class="card">
     <a href="/rf.html">
-    <img src="assets/img/rf.png" class="card-img-top" style="cursor:pointer">
+    <img src="assets/img/rf.gif" class="card-img-top" style="cursor:pointer">
     </a>
     <div class="card-body">
       <h3 class="card-title">Random Forest</h3>
@@ -232,7 +230,7 @@ Python side projects related to AI/ML/DL
 
 <div class="card-deck">
   <div class="card">
-    <img src="assets/img/abc.gif" class="card-img-top" data-toggle="modal" data-target="#halite" style="cursor:pointer">
+    <img src="assets/img/abc_index.gif" class="card-img-top" data-toggle="modal" data-target="#halite" style="cursor:pointer">
     <div class="card-body">
       <h3 class="card-title">Halite</h3>
       <p class="card-text">AI Competition by Two Sigma.</p>
@@ -255,22 +253,22 @@ Python side projects related to AI/ML/DL
         </button>
       </div>
       <div class="modal-body" style="display:block; padding:30px">
-        <a href="https://2018.halite.io/">Halite III</a>, my first Python machine learning competition. The two main ingredients for my bot were linear programming (so that agents do not crash into one another) and 
-        a simple keras neural net (PyTorch was not that popular then) governing high-level decisions (e.g. where to set a new base or which area to direct the ships to),
-        which was trained on self-play.<br><br>
-        Did not have much time to compete, but this relatively simple algorithm outperformed nearly 99% participants. Below are some of the winning games.
+        <a href="https://2018.halite.io/">Halite III</a>, AI competition by TwoSigma. The two main ingredients for my bot were linear programming (so that agents do not crash into one another) and 
+        a simple neural net governing high-level decisions (e.g. where to set a new base or which area to direct the ships to), which was trained on self-play.
+        <br><br>
+
+        This relatively simple algorithm outperformed nearly 99% other bots in the competition. Below are some of the winning games. 
+        <br><br>
+
+        <i class="fas fa-trophy"></i><b> Small map 1 v 1</b>
         <p style="text-align:center">
           <img src="assets/img/abc.gif" style="width:75%;border:0px solid black">
         </p>
-        <p style="text-align:center">
-          <img src="assets/img/abc2.gif" style="width:75%;border:0px solid black">
-        </p>
+        <i class="fas fa-trophy"></i><b> Medium map 1 v 1</b>
         <p style="text-align:center">
           <img src="assets/img/abc3.gif" style="width:75%;border:0px solid black">
         </p>
-        <p style="text-align:center">
-          <img src="assets/img/abc4.gif" style="width:75%;border:0px solid black">
-        </p>
+        <i class="fas fa-trophy"></i><b> Large map 1 v 1 v 1 v 1</b>
         <p style="text-align:center">
           <img src="assets/img/abc5.gif" style="width:75%;border:0px solid black">
         </p>
@@ -281,3 +279,37 @@ Python side projects related to AI/ML/DL
 <!-- Modal Halite-->
 
 
+
+
+
+<!-- Modal Transfer-->
+<div class="modal fade bd-example-modal-lg" id="Transfer" tabindex="-1" role="dialog" aria-labelledby="TransferTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TransferTitle">Neural Transfer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body" style="display:block; padding:30px">
+                I made a simple ✦<b>Neural Transfer app</b>✦ (applies the style of one image to another) via Streamlit and deployed it on Heroku for free. You can upload your own images and the network will be trained in real time!
+                <br><br>
+
+                Since the server is free, there are some constraints. For example, I could not use VGG19-net because its weights are too large, so had to switch to Alexnet. That's why the performance may not be too impressive. It also runs slow, but does the job eventually. 
+                <br><br>
+
+                <span data-toggle="tooltip">
+                  <a href="https://torchstyle.herokuapp.com/" type="button" class="btn btn-new btn-sm"><i class="fas fa-dice-d6 fa-lg"></i><b> App</b></a> 
+                </span>
+                <span style="padding-left:20px"></span>
+                <span data-toggle="tooltip"></span>
+                  <a href="https://github.com/varlamnet/torchstyle" type="button" class="btn btn-new btn-sm"><i class="fas fa-code fa-lg"></i><b> Code</b></a> 
+                </span>
+        <br><br>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Transfer-->
