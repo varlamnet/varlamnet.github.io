@@ -9,12 +9,12 @@ navbar-links:
 social-network-links:
   email: "varlam@varlam.net"
   github: varlamnet
-  twitter: varlamnet
-  reddit: varlamnet
-share-links-active:
-  twitter: true
-  facebook: true
-  linkedin: true
+  # twitter: varlamnet
+  # reddit: varlamnet
+# share-links-active:
+#   twitter: true
+#   facebook: true
+#   linkedin: true
 url-pretty: "varlam.net"
 excerpt_length: 0
 navbar-col: "
