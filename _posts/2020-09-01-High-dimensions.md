@@ -6,10 +6,10 @@ thumbnail-img: assets/img/cov.png
 comments: false
 ---
 <!-- MathJAx Import -->
-<!-- $$\newcommand{\abs}[1]{\left\lvert#1\right\rvert}$$ -->
+$$\newcommand{\abs}[1]{\left\lvert#1\right\rvert}$$
 $$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$$
 <!-- $$\newcommand{\inner}[1]{\left\langle#1\right\rangle}$$ -->
-<!-- $$\newcommand{\as}{\overset{a.s.}{\to}}$$ -->
+$$\newcommand{\as}{\overset{a.s.}{\to}}$$
 <!-- $$\newcommand{\d}{\overset{d}{\to}}$$ -->
 <!-- $$\DeclareMathOperator*{\argmin}{arg\,min}$$ -->
 <!-- $$\DeclareMathOperator*{\argmax}{arg\,max}$$ -->
@@ -32,15 +32,15 @@ $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
 <p class="dropcap">L</p>et $n$ be # of observations, $p$ be # of variables.
 The <b>classical</b> regime allows $n$ to diverge, but assumes $p$ fixed. In contrast, the <b>high-dimensional</b> regime permits both $n$ and $p$ to diverge, $ p/n \to \gamma > 0$. Many of the classical results break down in that case. Here I consider eigenvalues and eigenvectors of a high-dimensional covariance matrix. This has immediate implications for covariance estimation, but also for all the statistical tools based on covariance estimates: PCA, GLS, GMM, classification, portfolio optimization, etc.
 
-Consider a simple case <i class="fas fa-caret-right"></i> &nbsp; $X_i \overset{iid}{\sim} \mathcal{N}_p(\mathbf{0}, \Sigma),\quad i=1,\ldots, n.$
+Consider a simple case  &nbsp; $X_i \overset{iid}{\sim} \mathcal{N}_p(\mathbf{0}, \Sigma),\quad i=1,\ldots, n.$
 How to estimate $\Sigma$?
 
 Some notation:
 
 {: .box-note}
-Sample covariance estimator <i class="fas fa-caret-right"></i> &nbsp; $S = \frac{1}{n}\sum_i^n X_iX_i' = \frac{1}{n} X'X.$
+Sample covariance estimator  &nbsp; $S = \frac{1}{n}\sum_i^n X_iX_i' = \frac{1}{n} X'X.$
 <span style="display:block; height: 10px;"></span>
-Eigendecompositions <i class="fas fa-caret-right"></i> &nbsp; $\Sigma = ULU' = \sum_j^p \ell_j \mathrm{u}_j \mathrm{u}_j', \quad S = V\Lambda V' = \sum_j^p \lambda_j \mathrm{v}_j \mathrm{v}_j'.$
+Eigendecompositions  &nbsp; $\Sigma = ULU' = \sum_j^p \ell_j \mathrm{u}_j \mathrm{u}_j', \quad S = V\Lambda V' = \sum_j^p \lambda_j \mathrm{v}_j \mathrm{v}_j'.$
 <span style="display:block; height: 10px;"></span>
 Eigenvalues distinct, sorted in decreasing order.
 <span style="display:block; height: 10px;"></span>
@@ -48,13 +48,13 @@ Eigenvectors chosen with the first element positive.
 
 # Clasical Regime
 In a classical regime, $S$ is a very good estimator (Anderson 1963, Van der Vaart 2000): <span style="display:block; height: 10px;"></span>
-<i class="fas fa-check-circle"></i> Unbiased <i class="fas fa-caret-right"></i> &nbsp; $\E(S) = \Sigma.$ \\
-<!-- <i class="fas fa-check-circle"></i> Strongly consistent <i class="fas fa-caret-right"></i> &nbsp; $S \as \Sigma$ as $n\to\infty.$\\ -->
-<!-- <i class="fas fa-check-circle"></i> Eigenvalues converge <i class="fas fa-caret-right"></i> &nbsp; $\lambda_j \as \ell_j$ as $n\to\infty, \quad j=1,\ldots,p.$\\ -->
-<i class="fas fa-check-circle"></i> Asymptotically normal eigenvalues <i class="fas fa-caret-right"></i> &nbsp; $$ \sqrt{n}(\lambda_i-\ell_i) \overset{d}{\to} \mathcal{N}(0,2\ell_i^2), \quad j=1,\ldots,p.$$\\
-<!-- <i class="fas fa-check-circle"></i> Eigenvectors converge <i class="fas fa-caret-right"></i> &nbsp; $\mathrm{v}_j \as \mathrm{u}_j$ as $n\to\infty, \quad j=1,\ldots,p.$ -->
+<i class="fas fa-check-circle"></i> Unbiased  &nbsp; $\E(S) = \Sigma.$ \\
+<!-- <i class="fas fa-check-circle"></i> Strongly consistent  &nbsp; $S \as \Sigma$ as $n\to\infty.$\\ -->
+<!-- <i class="fas fa-check-circle"></i> Eigenvalues converge  &nbsp; $\lambda_j \as \ell_j$ as $n\to\infty, \quad j=1,\ldots,p.$\\ -->
+<i class="fas fa-check-circle"></i> Asymptotically normal eigenvalues  &nbsp; $$ \sqrt{n}(\lambda_i-\ell_i) \overset{d}{\to} \mathcal{N}(0,2\ell_i^2), \quad j=1,\ldots,p.$$\\
+<!-- <i class="fas fa-check-circle"></i> Eigenvectors converge  &nbsp; $\mathrm{v}_j \as \mathrm{u}_j$ as $n\to\infty, \quad j=1,\ldots,p.$ -->
 
-<i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <em>None of this holds in high dimensions</em> <i class="fas fa-exclamation-triangle" style="color:#f44336"></i>
+<i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <em>It gets trickier in high dimensions</em> 
 <span style="display:block; height: 10px;"></span>
 It is especially interesting what happens to eigenvalues and eigenvectors in high dimensions. There are three key features: <b>eigenvalue spreading</b>, <b>eigenvalue bias</b> and <b>eigenvectors inconsistency</b>.
 
@@ -70,7 +70,7 @@ In high dimensions, sample eigenvalues $\lambda_j$ are more spread out than thei
 Consider the case when $\Sigma = I_p,$ i.e. $\ell_1 = \ldots = \ell_p = 1,$ and $p/n \to \gamma \le 1.$ 
 
 {: .box-note}
-Empirical d'n of eigenvalues of sample covariance <i class="fas fa-caret-right"></i> &nbsp; $$F_p(x) := \frac{1}{p} \# \{ \lambda_j\le x  \}$$
+Empirical d'n of eigenvalues of sample covariance  &nbsp; $$F_p(x) := \frac{1}{p} \# \{ \lambda_j\le x  \}$$
 
 Ukranian mathematicians Marchenko & Pastur (MP) showed that this empirical d'n converges $F_p(x) \to F(x),$ with the limit pdf given by:
 
@@ -117,7 +117,7 @@ that is, the singular values of a random normal square matrix lie on a quarter c
 #### Bai & Yin's (1993) Law
 Also when $\Sigma = I_p$ and $\gamma \le 1$, the largest and smallest eigenvalues converge almost surely to the corresponding boundaries of the support, 
 
-<!-- <!-- $$\lambda_1 \as \lambda_+ \quad \text{and} \quad \lambda_p \as \lambda_-.$$ --> -->
+$$\lambda_1 \as \lambda_+ \quad \text{and} \quad \lambda_p \as \lambda_-.$$
 
 Notice that the larger is $\gamma$, the wider is the spreding and the stronger is the eigenvalues bias! This phenomenon is very general and is not limited to the identity case.
 
@@ -197,14 +197,12 @@ Johnstone and Lu (2004) showed that when $$p/n \to \gamma \in (0,\infty)$$, the 
 Their Theorem 4 says exactly how bad this inconsistency is
 
 {: .box-success}
-<!-- $$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as  -->
+$$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as 
 \begin{cases} 
     0, \quad & \ell_j < \lambda_+^{1/2}, \\
     \frac{1-\gamma/(\ell_j-1)^2}{1+\gamma/(\ell_j-1)}, \quad & \ell_j > \lambda_+^{1/2},  
-\end{cases}$$
-
-{: .box-success}
-<!-- $$\abs{\langle \widehat{\mathrm{v}}_j, \mathrm{v}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.$$ -->
+\end{cases}\\
+\abs{\langle \widehat{\mathrm{v}}_j, \mathrm{v}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.\quad\quad\quad\quad\quad\;$$
 
 In the special case where $$\Sigma = I$$ and the $$X_{ij}$$ are iid standard (real or complex) Gaussian random variables, it is known that the matrix of sample eigenvectors is Haar distributed.
 <hr class="new1" style="border-top: 1px solid grey"> 
