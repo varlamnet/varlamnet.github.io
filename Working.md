@@ -36,11 +36,11 @@ grid-row: 1/2;
   align-items: center;
 } 
 .item11 {
-grid-column: col-start 1 / span 7;
+grid-column: col-start 1 / span 9;
 grid-row: 1/2;
 }
 .item33 {
-grid-column: col-start 8 / span 5;
+grid-column: col-start 10 / span 3;
 grid-row: 1/2;
   display: flex;
   justify-content: center;
@@ -66,7 +66,7 @@ grid-row: 1/2;
 
 <div class="wrapper">
   <div class="item11">
-    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b> <i>(Job Market paper)</i>
+    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b>
   </div>
   <div class="item2">
     <p class="dropcap">F</p>actor modeling is a powerful statistical technique that permits to capture the common dynamics in a large panel of data with a few latent variables, or factors, thus alleviating the curse of dimensionality. Despite its popularity and widespread use for various applications ranging from genomics to finance, this methodology has predominantly remained linear. This study estimates factors nonlinearly through the kernel method, which allows flexible nonlinearities while still avoiding the curse of dimensionality. We focus on factor-augmented forecasting of a single time series in a high-dimensional setting, known as diffusion index forecasting in macroeconomics literature. Our main contribution is twofold. First, we show that the proposed estimator is consistent and it nests linear PCA estimator as well as some nonlinear estimators introduced in the literature as specific examples. Second, our empirical application to a classical macroeconomic dataset demonstrates that this approach can offer substantial advantages over mainstream methods. <br> <br>
@@ -83,14 +83,35 @@ grid-row: 1/2;
   <div class="item33">
     <center> 
       <a href="https://arxiv.org/pdf/2103.01266.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/JMP_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Short version"><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
-      <a href="https://drive.google.com/file/d/1XT9-gnNdrSYtsPTP0-95ULq01hxgO0h5/view?usp=sharing" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Video"><i class="fas fa-video fa-lg"></i></a>
     </center>
   </div>
 </div>
 
 <span style="display:block; height: 0px;"></span>
 
+<div class="wrapper">
+  <div class="item11">
+    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> with E. Seregina, <i>Journal of Data Science</i>, 1-19
+  </div>
+  <div class="item2">
+    <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
+
+    <b>Keywords:</b> 
+    <span class="badge">Pooled Testing</span>
+    <span class="badge">Compressed Sensing</span>
+    <span class="badge">Sparse Recovery</span>
+    <span class="badge">Lasso</span>
+    <span class="badge">Sensing Matrix</span>
+    <span class="badge">SARS-CoV-2</span>
+  </div>
+  <div class="item33">
+    <center> 
+      <a href="https://jds-online.org/journal/JDS/article/561/info" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
+    </center>
+  </div>
+</div>
+
+<span style="display:block; height: 0px;"></span>
 
 <div class="wrapper">
   <div class="item1">
@@ -120,28 +141,6 @@ We provide the theoretical guarantees and an empirical evaluation demonstrating 
   </div>
 </div>
 
-<span style="display:block; height: 0px;"></span>
 
-<div class="wrapper">
-  <div class="item11">
-    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> with E. Seregina, <i>Journal of Data Science</i>, 1-19
-  </div>
-  <div class="item2">
-    <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
 
-    <b>Keywords:</b> 
-    <span class="badge">Pooled Testing</span>
-    <span class="badge">Compressed Sensing</span>
-    <span class="badge">Sparse Recovery</span>
-    <span class="badge">Lasso</span>
-    <span class="badge">Sensing Matrix</span>
-    <span class="badge">SARS-CoV-2</span>
-  </div>
-  <div class="item33">
-    <center> 
-      <a href="https://jds-online.org/journal/JDS/article/561/info" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
-      <a href="/pdfs/Covid_pres.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Slides</b></a>
-      <a href="/pdfs/Covid_poster.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Poster</b></a>
-    </center>
-  </div>
-</div>
+
