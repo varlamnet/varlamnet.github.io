@@ -210,10 +210,20 @@ In the special case where $$\Sigma = I$$ and the $$X_{ij}$$ are iid standard (re
 
 ## PCA in high dimensions
 #### Johnstone Lu (2009), Thm 1
-PCA eigenvector estimate is consistent iff $$p/n \to 0$$.
+Assume a $p$-dimensional one-factor model 
 
-Given the true one-factor model, $$p/n \to c$$ and $$\norm{\rho_n}^2/\sigma^2 \to \omega > 0$$, then a.s. 
-$$\lim R^2(\widehat{\rho}, \rho) = R^2_\infty(\omega,c) = \frac{(\omega^2-c)_+}{\omega^2 +c\omega}.$$
+$$\mathrm{x}_i = v_i\rho + \sigma z_i, \quad i=1,\ldots,n,$$
+
+and that $$\frac{p}{n} \to c$$ and $$\frac{\|\rho\|^2}{\sigma^2} \to \omega > 0$$ and define the normalized inner product (cos of the angle)
+
+$$ R(\hat{\rho},\rho) = \frac{\hat{\rho}'\rho}{\|\hat{\rho}\|\|\rho\|}. $$
+
+Then 
+
+{: .box-success}
+$$\lim R^2(\widehat{\rho}, \rho) = \frac{(\omega^2-c)_+}{\omega^2 +c\omega} \quad a.s.$$
+
+<i class="fas fa-exclamation-triangle" style="color:#f44336"></i>  <em>i.e. PCA eigenvector estimate is consistent iff $$p/n \to 0$$.</em>
 
 Paul (2007) shows that this is also true for spiked covariance.
 
