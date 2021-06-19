@@ -29,7 +29,7 @@ img:hover {
   align-content: space-between;
   justify-content: left;
   grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-gap: 5px;
+  grid-gap: 20px;
 }
 .item1 {
   grid-column: col-start 1 / span 3;
@@ -75,7 +75,7 @@ input, textarea
   justify-content: center;
 }
 .item1{
-  max-height: 235px;
+  max-height: 300px;
 }
 .item2{
   text-align: center;
@@ -94,11 +94,11 @@ input, textarea
 <p style="margin-bottom:-1.5cm;"></p>
 <div class="wrapper">
     <div class="item1">
-      <center><p><img class = "roundedpic" src="assets/img/mainpic.jpg" alt="Profile pic" style="width:100%px;border:0px solid black" data-toggle="tooltip" data-placement="auto" title=""></p></center>
+      <center><p><img class = "roundedpic" src="assets/img/mainpic.jpg" alt="Profile pic" style="width:300px;border:0px solid black" data-toggle="tooltip" data-placement="auto" title=""></p></center>
     </div>
   <div class="item2">
     <a style="font-size:35px;">Varlam Kutateladze</a> <br>
-    <a>PhD Candidate in Economics</a> <br>
+    <!-- <a>PhD Candidate in Economics</a> <br> -->
     <span style="display:block; height: 10px;"></span>
 
     <a class ="socialcolor" href="mailto:{{ site.social-network-links.email }}" data-toggle="tooltip" data-placement="auto" title="varlam [at] varlam [dot] net" >
@@ -110,11 +110,11 @@ input, textarea
 
     <span style="display:block; height: 10px;"></span>
 
-    <span data-toggle="tooltip" data-placement="auto" title="Short CV">
+    <!-- <span data-toggle="tooltip" data-placement="auto" title="Short CV">
       <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm"><i class="fas fa-file-pdf fa-lg"></i><b> CV</b></a> 
-    </span>
+    </span> -->
 
-    <span style="display:block; height: 15px;"></span>
+    <span style="display:block; height: 10px;"></span>
     <div class="typewriter">
       <div class="typewriter-text">Welcome!</div>
     </div>
