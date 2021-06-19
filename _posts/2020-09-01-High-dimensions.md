@@ -49,9 +49,10 @@ Eigenvectors chosen with the first element positive.
 # Clasical Regime
 In a classical regime, $S$ is a very good estimator (Anderson 1963, Van der Vaart 2000): <span style="display:block; height: 10px;"></span>
 <i class="fas fa-check-circle"></i> Unbiased  &nbsp; $\E(S) = \Sigma.$ \\
-<!-- <i class="fas fa-check-circle"></i> Strongly consistent  &nbsp; $S \as \Sigma$ as $n\to\infty.$\\ -->
+<i class="fas fa-check-circle"></i> Consistent  &nbsp; $S \as \Sigma$ as $n\to\infty.$\\
 <!-- <i class="fas fa-check-circle"></i> Eigenvalues converge  &nbsp; $\lambda_j \as \ell_j$ as $n\to\infty, \quad j=1,\ldots,p.$\\ -->
 <i class="fas fa-check-circle"></i> Asymptotically normal eigenvalues  &nbsp; $$ \sqrt{n}(\lambda_i-\ell_i) \overset{d}{\to} \mathcal{N}(0,2\ell_i^2), \quad j=1,\ldots,p.$$\\
+<i class="fas fa-check-circle"></i> Is invertible.\\
 <!-- <i class="fas fa-check-circle"></i> Eigenvectors converge  &nbsp; $\mathrm{v}_j \as \mathrm{u}_j$ as $n\to\infty, \quad j=1,\ldots,p.$ -->
 
 <i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <em>It gets trickier in high dimensions</em> 
@@ -193,8 +194,8 @@ In the opposite case, the spiked sample eigenvalues will overshoot the true coun
 
 
 ## Eigenvector inconsistency
-Johnstone and Lu (2004) showed that when $$p/n \to \gamma \in (0,\infty)$$, the sample eigenvectors are not consistent and hence PCA would generally be inconsistent.
-Their Theorem 4 says exactly how bad this inconsistency is
+Paul (2007) showed that when $$p/n \to \gamma \in (0,\infty)$$, the sample eigenvectors are not consistent and hence PCA would generally be inconsistent.
+Their Theorem 4 characterizes precisely how bad this inconsistency is
 
 {: .box-success}
 $$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as 
