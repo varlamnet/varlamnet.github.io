@@ -198,12 +198,12 @@ Paul (2007) showed that when $$p/n \to \gamma \in (0,\infty)$$, the sample eigen
 Their Theorem 4 characterizes precisely how bad this inconsistency is
 
 {: .box-success}
-$$\langle \widehat{\mathrm{v}}_j, \mathrm{v}_j \rangle^2 \as 
+$$\langle \mathrm{v}_j, \mathrm{u}_j \rangle^2 \as 
 \begin{cases} 
     0, \quad & \ell_j < \lambda_+^{1/2}, \\
     \frac{1-\gamma/(\ell_j-1)^2}{1+\gamma/(\ell_j-1)}, \quad & \ell_j > \lambda_+^{1/2},  
 \end{cases}\\
-\abs{\langle \widehat{\mathrm{v}}_j, \mathrm{v}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.\quad\quad\quad\quad\quad\;$$
+\abs{\langle \mathrm{v}_j, \mathrm{u}_k \rangle} \as 0, \quad \text{for} \quad j\ne k.\quad\quad\quad\quad\quad\;$$
 
 In the special case where $$\Sigma = I$$ and the $$X_{ij}$$ are iid standard (real or complex) Gaussian random variables, it is known that the matrix of sample eigenvectors is Haar distributed.
 <hr class="new1" style="border-top: 1px solid grey"> 
