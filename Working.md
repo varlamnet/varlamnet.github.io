@@ -64,9 +64,11 @@ grid-row: 1/2;
 </style>
 
 
+<span style="display:block; height: 0px;"></span>
+
 <div class="wrapper">
   <div class="item11">
-    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b>
+    <b>"The Kernel Trick for Nonlinear Factor Modeling"</b> <br> <i>International Journal of Forecasting</i>, 2021
   </div>
   <div class="item2">
     <p class="dropcap">F</p>actor modeling is a powerful statistical technique that permits to capture the common dynamics in a large panel of data with a few latent variables, or factors, thus alleviating the curse of dimensionality. Despite its popularity and widespread use for various applications ranging from genomics to finance, this methodology has predominantly remained linear. This study estimates factors nonlinearly through the kernel method, which allows flexible nonlinearities while still avoiding the curse of dimensionality. We focus on factor-augmented forecasting of a single time series in a high-dimensional setting, known as diffusion index forecasting in macroeconomics literature. Our main contribution is twofold. First, we show that the proposed estimator is consistent and it nests linear PCA estimator as well as some nonlinear estimators introduced in the literature as specific examples. Second, our empirical application to a classical macroeconomic dataset demonstrates that this approach can offer substantial advantages over mainstream methods. <br> <br>
@@ -82,7 +84,7 @@ grid-row: 1/2;
   </div>
   <div class="item33">
     <center> 
-      <a href="https://arxiv.org/pdf/2103.01266.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S0169207021000741" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a> 
     </center>
   </div>
 </div>
@@ -91,7 +93,7 @@ grid-row: 1/2;
 
 <div class="wrapper">
   <div class="item11">
-    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> with E. Seregina, <i>Journal of Data Science</i>, 1-19
+    <b>"Fast and Efficient Data Science Techniques for COVID-19 Group Testing"</b> with E. Seregina <i>Journal of Data Science</i>, 2021
   </div>
   <div class="item2">
     <p class="dropcap">R</p>esearchers and public officials tend to agree that until a vaccine is developed, stopping SARS-CoV-2 transmission is the name of the game. Testing is the key to preventing the spread, especially by asymptomatic individuals. With testing capacity restricted, group testing is an appealing alternative for comprehensive screening and has recently received FDA emergency authorization. This technique tests pools of individual samples, thereby often requiring fewer testing resources while potentially providing multiple folds of speedup. We approach group testing from a data science perspective and offer two contributions. First, we provide an extensive empirical comparison of modern group testing techniques based on simulated data. Second, we propose a simple one-round method based on $\ell_1$-norm sparse recovery, which outperforms current state-of-the-art approaches at certain disease prevalence rates. <br> <br>
@@ -115,28 +117,22 @@ grid-row: 1/2;
 
 <div class="wrapper">
   <div class="item1">
-    <b>"Nonlinear Shrinkage Covariance Matrix Estimation"</b>
+    <b>"High-Dimensional Covariance Estimation"</b>
   </div>
   <div class="item2">
 
- <p class="dropcap">C</p>ovariance matrix estimates are required in a wide range of applied problems in multivariate data analysis, including portfolio and risk management in finance, factor models and testing in economics, and graphical models and classification in machine learning.
-In modern applications, where often the model dimensionality is comparable or even larger than the sample size, 
-the classical sample covariance estimator lacks desirable properties, such as consistency, and suffers from eigenvalue spreading.
-In recent years, improved estimators have been proposed based on the idea of regularization.  Specifically, such estimators, known as rotation-equivariant estimators, shrink the sample eigenvalues, while keeping the eigenvectors of the sample covariance estimator. In high dimensions, however, the sample eigenvectors will generally be strongly inconsistent, rendering eigenvalue shrinkage estimators suboptimal. 
-We consider an estimator that goes beyond mere eigenvalue shrinkage and employs recent advancements in random matrix theory to account for eigenvector inconsistency in a large-dimensional setting. 
-We provide the theoretical guarantees and an empirical evaluation demonstrating the superior performance of the proposed estimator. <br> <br>
+ <p class="dropcap">C</p>ovariance matrix estimates are required in a wide range of applied problems in multivariate data analysis, including portfolio and risk management in finance, factor models and testing in economics, and graphical models and classification in machine learning. In modern applications, where often the model dimensionality is comparable or even larger than the sample size, the classical sample covariance estimator lacks desirable properties, such as consistency, and suffers from eigenvalue spreading. In recent years, improved estimators have been proposed based on the idea of regularization. Specifically, such estimators, known as rotation-equivariant estimators, shrink the sample eigenvalues, while keeping the eigenvectors of the sample covariance estimator. In high dimensions, however, the sample eigenvectors will generally be strongly inconsistent, rendering eigenvalue shrinkage estimators suboptimal. We consider an estimator that goes beyond mere eigenvalue shrinkage and aims at precise estimation of eigenvectors in sparse settings, without requiring eigenvalues to diverge. The rate of convergence is provided in terms of spectral norm and it achieves the optimal rate under reasonable assumptions. We also provide a numerical simulation demonstrating the superior performance of the proposed estimator as compared to the competition.<br> <br>
 
-    <b>Keywords:</b> 
-    <span class="badge">Shrinkage estimator</span>
-    <span class="badge">Rotation equivariance</span>
-    <span class="badge">Random matrix theory</span>
-    <span class="badge">Large-dimensional asymptotics</span>
-    <span class="badge">Bias correction</span>
-    <span class="badge">Principal components</span>
+    <b>Keywords:</b>
+    <span class="badge"> Sparse recovery </span>
+    <span class="badge"> Rotation equivariance </span>
+    <span class="badge"> Random matrix theory </span>
+    <span class="badge"> Large-dimensional asymptotics </span>
+    <span class="badge"> Principal components </span>
   </div>
   <div class="item3">
     <center> 
-      <a href="/pdfs/Cov_abstract.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Paper available soon!"><i class="fas fa-file-pdf fa-lg"></i><b> Abstract</b></a>  
+      <a href="/pdfs/cov.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Working paper"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a>  
     </center>
   </div>
 </div>
