@@ -26,8 +26,48 @@ subtitle: Instructor / TA
 </style>
 
 
+
 <div class="cards">
-  
+  <div class="card" style = "font-size:14pt">
+    <center> 
+      <b> Teaching Assistant ${~\cdotp~}$ Intro to Macroeconomics ${~\cdotp~}$ Spring 2021 ${~\cdotp~}$ Score: 6.25/7.0</b>
+    </center> 
+  <hr class="new1" style="border-top: 2px solid grey">
+  <a style = "font-size:12pt">"TA was clear in all of his explanations for this economics course. His ability to go through problem sets helped me to obtain a deeper understanding of the material. I always felt prepared for examination because of this additional help that I received from the discussion class. I would give my TA a 10/10 rating for all of the help I received."</a><br/>
+  <a style = "font-size:12pt">"It was really helpful having asynchronous classes because of all the work, it allows me to plan things and get everything done on time."</a><br/>
+  <a style = "font-size:12pt">"Great TA! always let us know he was available if we needed him and went over any material we needed to go over."</a><br/>
+  </div>
+
+
+<div class="cards">
+  <div class="card" style = "font-size:14pt">
+    <center> 
+      <b> Teaching Assistant ${~\cdotp~}$ Intro to Macroeconomics ${~\cdotp~}$ Winter 2021 ${~\cdotp~}$ Score: 6.6/7.0</b>
+    </center> 
+  <hr class="new1" style="border-top: 2px solid grey">
+  <a style = "font-size:12pt">"Before the midterms, I was incredibly struggling with the material for this course. I thought I would fail, because I didn't understand half of what was going on. This TA's discussion section prior to the final was incredibly helpful to me in that it helped wrap everything that we'd been learning until then up, and provided a very well-done review that helped me understand fully the material for the exam. This TA was INCREDIBLY helpful for my exams, and is the reason I passed them with an A!"</a><br/>
+  <a style = "font-size:12pt">"Varlam's discussions were extremely helpful and it was nice that they were asynchronous as well. Overall he was an effective teacher and his discussions helped me significantly with grasping certain concepts of the material."</a><br/>
+  <a style = "font-size:12pt">"I usually went to the discussions when I had a serious issue that I didn't fully understand. The discussion recordings were done very well and I could easily find problems with steps when I needed them the most. Discussions were very informative when needed!"</a><br/>
+  </div>
+
+<div class="cards">
+  <div class="card" style = "font-size:14pt">
+    <center> 
+      <b> Teaching Assistant ${~\cdotp~}$ The Stock Market ${~\cdotp~}$ Fall 2020 ${~\cdotp~}$ Score: 6.5/7.0</b>
+    </center> 
+  <hr class="new1" style="border-top: 2px solid grey">
+  <a style = "font-size:12pt">"Varlam was a very effective teacher because he always helped me understand the Professor's lectures much more. I also like that he went over the homework questions because they really helped me understand why I got some questions wrong, for example. He was always extremely organized, which also helped me a lot throughout the quarter."</a><br/>
+  <a style = "font-size:12pt">"He was really approachable outside the classroom! And having pre recorded material was extremely useful. Hopefully I have him again sometime in future!"</a><br/>
+  <a style = "font-size:12pt">"Provides great examples and we get a quiz that reflects
+  that. Always talks about topics that are important for the class."</a><br/>
+  <a style = "font-size:12pt">"Varlam was a wonderful TA by making his discussions available with concise explanations. Moreover, he lends his helping hand through the process with explanations as he teaches the material without completely solving the problem forcing students to take a closer look at the material. Although I did not take advantage of office hours, Varlam seemed very open to helping students when they needed it. Unfortunately, can't think of any critiques. Thanks for the quarter!"</a><br/>
+  <a style = "font-size:12pt">"Enjoyed the way he explained problems it was easy to understand and follow along and would say it definitely helped during exams."</a><br/>
+  <a style = "font-size:12pt">"Varlam was a great instructor. He helped me understand many of the material with step by step explanations. He seems to know exactly what he is doing and was a great TA overall."</a><br/>
+  </div>
+
+
+
+<div class="cards">
   <div class="card" style = "font-size:14pt">
     <center> 
       <b> Instructor ${~\cdotp~}$ Money, Banking & Credit ${~\cdotp~}$ Summer 2020 ${~\cdotp~}$ Score: 5.0/5.0</b>
