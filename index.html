@@ -55,8 +55,10 @@ img:hover {
   color: inherit;
   background-color:var(--headbackcol);
   border-radius: 5px;
-  width: 50%;
-  height: 50%;
+}
+.col-md-9{
+  max-width: 80%;
+  flex-basis: 500%;
 }
 .modal-content{
   background-color: var(--headbackcol);
@@ -69,6 +71,28 @@ input, textarea
 ::placeholder { 
   color: var(--backcol);
   opacity: 1; 
+}
+.row{
+  flex-wrap: nowrap;
+}
+.center {
+  display: flex;
+  align-items: center;
+}
+.img-fluid{
+  max-height: 10rem;
+}
+.htrans{
+  color: inherit;
+}
+.htrans:hover{
+  color: inherit;
+}
+.htrans:hover{
+  color: inherit;
+}
+.htrans:focus{
+  color: inherit;
 }
 @media screen and (max-width: 550px) {
 .wrapper {
@@ -85,7 +109,12 @@ input, textarea
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
   width: 100%;
-  height: 100%;
+}
+.img-fluid{
+  display: none;
+}
+.col-md-9{
+  max-width: 100%;
 }
 }
 </style>
@@ -94,7 +123,7 @@ input, textarea
 <p style="margin-bottom:-1.5cm;"></p>
 <div class="wrapper">
     <div class="item1">
-      <center><p><img class = "roundedpic" src="assets/img/mainpic.jpg" alt="Profile pic" style="width:300px;border:0px solid black" data-toggle="tooltip" data-placement="auto" title=""></p></center>
+      <center><p><img class = "roundedpic" src="assets/img/mainpic.png" alt="Profile pic" style="width:250px;border:0px solid black" data-toggle="tooltip" data-placement="left" title="Welcome!"></p></center>
     </div>
   <div class="item2">
     <a style="font-size:35px;">Varlam Kutateladze</a> <br>
@@ -124,28 +153,31 @@ input, textarea
 
 <div>
   <span style="display:block; height: 15px;"></span>
-  <i class="fas fa-check"></i><b> Research area</b><span style="display:block; height: 15px;"></span>
+  <a style="font-size:24px;"><i class="fas fa-star"></i><b> Research area</b></a>
+  <span style="display:block; height: 15px;"></span>
   <span class="badge">Machine Learning</span>
   <span class="badge">High-Dimensional Statistics</span>
   <span class="badge">Forecasting</span>
-  <span class="badge">Covariance Estimation</span>
   <!-- <span class="badge">Causal Inference</span>  -->
 </div>
 
 
 <!-- LINE & JUMP -->
-<span style="display:block; height: 20px;"></span>
+<span style="display:block; height: 30px;"></span>
 <!-- <hr style="border-top: 1px solid grey"> -->
 
-<i class="fas fa-check"></i><b> Projects</b><span style="display:block; height: 15px;"></span>
-Python side projects related to AI/ML
+<a style="font-size:24px;"><i class="fas fa-cubes"></i><b> Apps</b></a>
+
 
 <!-- LINE & JUMP -->
 <span style="display:block; height: 20px;"></span>
 
+
 <div class="card-deck">
   <div class="card">
-    <img src="assets/img/capitol.gif" class="card-img-top" data-toggle="modal" data-target="#Transfer" style="cursor:pointer">
+    <a href="https://share.streamlit.io/varlamnet/torchstyle/streamlit/app.py">
+      <img src="assets/img/capitol.gif" class="card-img-top" data-toggle="tooltip" data-placement="top" title="Neural Transfer app that trains VGG19-net in real time to stylize images!">
+    </a>
     <div class="card-body">
       <h3 class="card-title">Neural Transfer</h3>
       <p class="card-text">PyTorch Edition</p>
@@ -153,7 +185,7 @@ Python side projects related to AI/ML
   </div>
   <div class="card">
     <a href="/rf.html">
-    <img src="assets/img/rf.gif" class="card-img-top" style="cursor:pointer">
+    <img src="assets/img/rf.gif" class="card-img-top" data-toggle="tooltip" data-placement="top" title="Like it says -- Random Forest!">
     </a>
     <div class="card-body">
       <h3 class="card-title">Random Forest</h3>
@@ -162,7 +194,7 @@ Python side projects related to AI/ML
   </div>
   <div class="card">
     <a href="/nn.html">
-      <img src="assets/img/nn.gif" class="card-img-top" style="cursor:pointer">
+      <img src="assets/img/nn.gif" class="card-img-top" data-toggle="tooltip" data-placement="top" title="Feedforward neural net!">
     </a>
     <div class="card-body">
       <h3 class="card-title">Simple NN</h3>
@@ -171,58 +203,6 @@ Python side projects related to AI/ML
   </div> 
 </div>
 
-<!-- LINE & JUMP -->
-<span style="display:block; height: 20px;"></span>
-
-<div class="card-deck">
-  <div class="card">
-    <img src="assets/img/abc_index.gif" class="card-img-top" data-toggle="modal" data-target="#halite" style="cursor:pointer">
-    <div class="card-body">
-      <h3 class="card-title">Halite</h3>
-      <p class="card-text">AI Competition by Two Sigma.</p>
-    </div>
-  </div> 
-  <div class="card" style="opacity: 0.0">
-  </div> 
-  <div class="card" style="opacity: 0.0">
-  </div> 
-</div>
-
-<!-- Modal Halite-->
-<div class="modal fade bd-example-modal-lg" id="halite" tabindex="-1" role="dialog" aria-labelledby="haliteTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="haliteTitle">Halite</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="fas fa-times"></i></span>
-        </button>
-      </div>
-      <div class="modal-body" style="display:block; padding:30px">
-        <a href="https://2018.halite.io/">Halite III</a>, AI competition by TwoSigma. The two main ingredients for my bot were linear programming (so that agents do not crash into one another) and 
-        a simple neural net governing high-level decisions (e.g. where to set a new base or which area to direct the ships to), which was trained on self-play.
-        <br><br>
-
-        This relatively simple algorithm outperformed nearly 99% other bots in the competition. Below are some of the winning games. 
-        <br><br>
-
-        <i class="fas fa-trophy"></i><b> Small map 1 v 1</b>
-        <p style="text-align:center">
-          <img src="assets/img/abc.gif" style="width:75%;border:0px solid black">
-        </p>
-        <i class="fas fa-trophy"></i><b> Medium map 1 v 1</b>
-        <p style="text-align:center">
-          <img src="assets/img/abc3.gif" style="width:75%;border:0px solid black">
-        </p>
-        <i class="fas fa-trophy"></i><b> Large map 1 v 1 v 1 v 1</b>
-        <p style="text-align:center">
-          <img src="assets/img/abc5.gif" style="width:75%;border:0px solid black">
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Halite-->
 
 <!-- Modal Transfer-->
 <div class="modal fade bd-example-modal-lg" id="Transfer" tabindex="-1" role="dialog" aria-labelledby="TransferTitle" aria-hidden="true">
@@ -272,3 +252,141 @@ Python side projects related to AI/ML
 <!-- <hr style="border-top: 1px solid grey"> -->
 
 <!-- <i class="fas fa-check"></i><b> Books </b><span style="display:block; height: 15px;"></span> -->
+
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 50px;"></span>
+<!-- <hr style="border-top: 1px solid grey"> -->
+
+<a style="font-size:24px;"><i class="fas fa-pen-nib"></i> Notes</a>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2021-08-01-Logistic/">Logistic Regression vs AutoML</a></h3>
+        <p class="card-text">For spam detection</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2021-08-01-Logistic/" class="post-image">
+        <img src="assets/img/spam.png" href="#" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div></a>
+</div>
+
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="/2020-10-01-PyTorch-Mnist/">PyTorch Basics</a></h3>
+        <p class="card-text">MNIST classification</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-10-01-PyTorch-Mnist/" class="post-image">
+        <img src="assets/img/pytorch.png" class="img-fluid rounded-start" alt="...">
+      </a>
+      </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-09-01-High-dimensions/">Statistics in high dimensions</a></h3>
+        <p class="card-text">What could go wrong?</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-09-01-High-dimensions/" class="post-image">
+        <img src="assets/img/cov.png" class="img-fluid rounded-start" alt="...">
+      </a>
+      </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-08-01-Stein/">Stein's Paradox</a></h3>
+        <p class="card-text">Beat ordinary estimators</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-08-01-Stein/" class="post-image">
+        <img src="assets/img/stein.jpg" class="img-fluid rounded-start" alt="...">
+      </a>
+      </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-07-01-Random-forest/">Random Forest</a></h3>
+        <p class="card-text">Foundations</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-07-01-Random-forest/" class="post-image">
+        <img src="assets/img/forest.png" class="img-fluid rounded-start" alt="...">
+      </a>
+      </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-06-15-Nonparametric/">Nonparametric estimation</a></h3>
+        <p class="card-text">Nadaraya-Watson and other basics</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div style="text-align: right">
+      <a href="2020-06-15-Nonparametric/" class="post-image">
+        <img src="assets/img/nonparametric.png" class="img-fluid rounded-start" alt="...">
+      </a>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
