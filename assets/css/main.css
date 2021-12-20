@@ -947,8 +947,7 @@ footer .footer-custom-content {
 }
 .post-image {
   float: right;
-  margin-top: -8.5rem;
-  filter: grayscale(90%);
+  filter: grayscale(50%);
 }
 .post-image:hover {
   filter: grayscale(0%);
