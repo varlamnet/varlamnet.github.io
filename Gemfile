@@ -5,3 +5,5 @@ gem 'tzinfo-data'
 gem 'wdm'
 gemspec
 
+
+gem "webrick", "~> 1.7"
