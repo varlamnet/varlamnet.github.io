@@ -132,7 +132,7 @@ grid-row: 1/2;
   </div>
   <div class="item3">
     <center> 
-      <a href="/pdfs/cov.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Working paper"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a>  
+      <a href="/pdfs/cov.pdf" type="button" class="btn btn-new btn-sm" data-toggle="tooltip" data-placement="bottom" title="Check back later"><i class="fas fa-file-pdf fa-lg"></i><b> Paper</b></a>  
     </center>
   </div>
 </div>

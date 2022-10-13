@@ -23,11 +23,6 @@ $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
   }
 </style>
 
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <i class="fas fa-exclamation-circle fa-lg"></i><strong> This section is under development!</strong>
-</div>
-
 # Classical vs High-dimensional
 <p class="dropcap">L</p>et $n$ be # of observations, $p$ be # of variables.
 The <b>classical</b> regime allows $n$ to diverge, but assumes $p$ fixed. In contrast, the <b>high-dimensional</b> regime permits both $n$ and $p$ to diverge, $ p/n \to \gamma > 0$. Many of the classical results break down in that case. Here I consider eigenvalues and eigenvectors of a high-dimensional covariance matrix. This has immediate implications for covariance estimation, but also for all the statistical tools based on covariance estimates: PCA, GLS, GMM, classification, portfolio optimization, etc.
@@ -229,9 +224,3 @@ $$\lim R^2(\widehat{\rho}, \rho) = \frac{(\omega^2-c)_+}{\omega^2 +c\omega} \qua
 Paul (2007) shows that this is also true for spiked covariance.
 
 Luckily, consistency can be recovered if there exists a sparse representation in some basis. In that case, PCA on a subset of variables with sufficiently high variability can yield consistent estimates.
-<hr class="new1" style="border-top: 5px solid grey"> 
-Link to code <i class="fas fa-arrow-right"></i> 
-<span data-toggle="tooltip" data-placement="auto" title="Code">
-      <a href="https://colab.research.google.com/drive/1vGkQKdZlKHqhuIdMcDEHqX_c2KUpi7m2?usp=sharing"
-       type="button" class="btn btn-new btn-sm"><i class="fas fa-code fa-lg"></i><b> Colab</b></a> 
-</span>
