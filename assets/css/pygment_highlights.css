@@ -1,0 +1,394 @@
+html, html[data-theme="light"] {
+--c1: #ffffcc ;
+--c2: #f8f8f8 ; 
+--c3: transparent ; 
+--c4: #408080 ; 
+--c5: transparent ; 
+--c6: transparent ;
+--c7: #FF0000 ; 
+--c8: #008000 ; 
+--c9: #666666 ; 
+--c10:#408080 ; 
+--c11:#408080 ;
+--c12:#BC7A00 ; 
+--c13:#408080 ; 
+--c14:#408080 ; 
+--c15:#408080 ; 
+--c16:#A00000 ;
+--c17:#00A000 ; 
+--c18:#800080 ; 
+--c19:#008000 ; 
+--c20:#008000 ; 
+--c21:#008000 ;
+--c22:#008000 ; 
+--c23:#008000 ; 
+--c24:#B00040 ; 
+--c25:#666666 ; 
+--c26:#BA2121 ;
+--c27:#7D9029 ; 
+--c28:#008000 ; 
+--c29:#0000FF ; 
+--c30:#880000 ; 
+--c31:#AA22FF ;
+--c32:#999999 ; 
+--c33:#D2413A ; 
+--c34:#0000FF ; 
+--c35:#A0A000 ; 
+--c36:#0000FF ;
+--c37:#008000 ; 
+--c38:#19177C ; 
+--c39:#AA22FF ; 
+--c40:#bbbbbb ; 
+--c41:#666666 ;
+--c42:#666666 ; 
+--c43:#666666 ; 
+--c44:#666666 ; 
+--c45:#666666 ; 
+--c46:#BA2121 ;
+--c47:#BA2121 ; 
+--c48:#BA2121 ; 
+--c49:#BA2121 ; 
+--c50:#BA2121 ; 
+--c51:#BA2121 ;
+--c52:#BB6622 ; 
+--c53:#BA2121 ; 
+--c54:#BB6688 ; 
+--c55:#008000 ; 
+--c56:#BB6688 ;
+--c57:#BA2121 ; 
+--c58:#19177C ; 
+--c59:#008000 ; 
+--c60:#0000FF ; 
+--c61:#19177C ;
+--c62:#19177C ; 
+--c63:#19177C ; 
+--c64:#19177C ; 
+--c65:#666666 ; 
+--c66:transparent ;
+--c67:#404040 ; 
+--c68:#404040 ; 
+--c69:transparent ; 
+--c70:transparent ; 
+--c71:transparent ;
+--c72:#FF0000 ; 
+--c73:#000080 ; 
+--c74:#888888 ; 
+--c75:#000080 ; 
+--c76:#0044DD ;
+}
+html[data-theme="dark"] {
+--c1: #49483e ;
+--c2: #272822 ; 
+--c3: #f8f8f2 ; 
+--c4: #75715e ; 
+--c5: #960050 ; 
+--c6: #1e0010 ;
+--c7: transparent ; 
+--c8: #66d9ef ; 
+--c9: #f92672 ; 
+--c10:#75715e ; 
+--c11:#75715e ;
+--c12:#75715e ; 
+--c13:#75715e ; 
+--c14:#75715e ; 
+--c15:#75715e ; 
+--c16:#f92672 ;
+--c17:#a6e22e ; 
+--c18:#75715e ; 
+--c19:#66d9ef ; 
+--c20:#66d9ef ; 
+--c21:#f92672 ;
+--c22:#66d9ef ; 
+--c23:#66d9ef ; 
+--c24:#66d9ef ; 
+--c25:#ae81ff ; 
+--c26:#e6db74 ;
+--c27:#a6e22e ; 
+--c28:#f8f8f2 ; 
+--c29:#a6e22e ; 
+--c30:#66d9ef ; 
+--c31:#a6e22e ;
+--c32:#f8f8f2 ; 
+--c33:#a6e22e ; 
+--c34:#a6e22e ; 
+--c35:#f8f8f2 ; 
+--c36:#f8f8f2 ;
+--c37:#f92672 ; 
+--c38:#f8f8f2 ; 
+--c39:#f92672 ; 
+--c40:#f8f8f2 ; 
+--c41:#ae81ff ;
+--c42:#ae81ff ; 
+--c43:#ae81ff ; 
+--c44:#ae81ff ; 
+--c45:#ae81ff ; 
+--c46:#e6db74 ;
+--c47:#e6db74 ; 
+--c48:#e6db74 ; 
+--c49:#e6db74 ; 
+--c50:#e6db74 ; 
+--c51:#e6db74 ;
+--c52:#ae81ff ; 
+--c53:#e6db74 ; 
+--c54:#e6db74 ; 
+--c55:#e6db74 ; 
+--c56:#e6db74 ;
+--c57:#e6db74 ; 
+--c58:#e6db74 ; 
+--c59:#f8f8f2 ; 
+--c60:#a6e22e ; 
+--c61:#f8f8f2 ;
+--c62:#f8f8f2 ; 
+--c63:#f8f8f2 ; 
+--c64:#f8f8f2 ; 
+--c65:#ae81ff ; 
+--c66:#ae81ff ;
+--c67:#f8f8f2 ; 
+--c68:#f8f8f2 ; 
+--c69:#e6db74 ; 
+--c70:#a6e22e ; 
+--c71:#f8f8f2 ;
+--c72:transparent ; 
+--c73:transparent ; 
+--c74:transparent ; 
+--c75:transparent ; 
+--c76:transparent ;
+}
+@media (prefers-color-scheme: dark) {
+html, html[data-theme="dark"] {
+--c1: #49483e ;
+--c2: #272822 ; 
+--c3: #f8f8f2 ; 
+--c4: #75715e ; 
+--c5: #960050 ; 
+--c6: #1e0010 ;
+--c7: transparent ; 
+--c8: #66d9ef ; 
+--c9: #f92672 ; 
+--c10:#75715e ; 
+--c11:#75715e ;
+--c12:#75715e ; 
+--c13:#75715e ; 
+--c14:#75715e ; 
+--c15:#75715e ; 
+--c16:#f92672 ;
+--c17:#a6e22e ; 
+--c18:#75715e ; 
+--c19:#66d9ef ; 
+--c20:#66d9ef ; 
+--c21:#f92672 ;
+--c22:#66d9ef ; 
+--c23:#66d9ef ; 
+--c24:#66d9ef ; 
+--c25:#ae81ff ; 
+--c26:#e6db74 ;
+--c27:#a6e22e ; 
+--c28:#f8f8f2 ; 
+--c29:#a6e22e ; 
+--c30:#66d9ef ; 
+--c31:#a6e22e ;
+--c32:#f8f8f2 ; 
+--c33:#a6e22e ; 
+--c34:#a6e22e ; 
+--c35:#f8f8f2 ; 
+--c36:#f8f8f2 ;
+--c37:#f92672 ; 
+--c38:#f8f8f2 ; 
+--c39:#f92672 ; 
+--c40:#f8f8f2 ; 
+--c41:#ae81ff ;
+--c42:#ae81ff ; 
+--c43:#ae81ff ; 
+--c44:#ae81ff ; 
+--c45:#ae81ff ; 
+--c46:#e6db74 ;
+--c47:#e6db74 ; 
+--c48:#e6db74 ; 
+--c49:#e6db74 ; 
+--c50:#e6db74 ; 
+--c51:#e6db74 ;
+--c52:#ae81ff ; 
+--c53:#e6db74 ; 
+--c54:#e6db74 ; 
+--c55:#e6db74 ; 
+--c56:#e6db74 ;
+--c57:#e6db74 ; 
+--c58:#e6db74 ; 
+--c59:#f8f8f2 ; 
+--c60:#a6e22e ; 
+--c61:#f8f8f2 ;
+--c62:#f8f8f2 ; 
+--c63:#f8f8f2 ; 
+--c64:#f8f8f2 ; 
+--c65:#ae81ff ; 
+--c66:#ae81ff ;
+--c67:#f8f8f2 ; 
+--c68:#f8f8f2 ; 
+--c69:#e6db74 ; 
+--c70:#a6e22e ; 
+--c71:#f8f8f2 ;
+--c72:transparent ; 
+--c73:transparent ; 
+--c74:transparent ; 
+--c75:transparent ; 
+--c76:transparent ;
+}
+html[data-theme="light"] {
+--c1: #ffffcc ;
+--c2: #f8f8f8 ; 
+--c3: transparent ; 
+--c4: #408080 ; 
+--c5: transparent ; 
+--c6: transparent ;
+--c7: #FF0000 ; 
+--c8: #008000 ; 
+--c9: #666666 ; 
+--c10:#408080 ; 
+--c11:#408080 ;
+--c12:#BC7A00 ; 
+--c13:#408080 ; 
+--c14:#408080 ; 
+--c15:#408080 ; 
+--c16:#A00000 ;
+--c17:#00A000 ; 
+--c18:#800080 ; 
+--c19:#008000 ; 
+--c20:#008000 ; 
+--c21:#008000 ;
+--c22:#008000 ; 
+--c23:#008000 ; 
+--c24:#B00040 ; 
+--c25:#666666 ; 
+--c26:#BA2121 ;
+--c27:#7D9029 ; 
+--c28:#008000 ; 
+--c29:#0000FF ; 
+--c30:#880000 ; 
+--c31:#AA22FF ;
+--c32:#999999 ; 
+--c33:#D2413A ; 
+--c34:#0000FF ; 
+--c35:#A0A000 ; 
+--c36:#0000FF ;
+--c37:#008000 ; 
+--c38:#19177C ; 
+--c39:#AA22FF ; 
+--c40:#bbbbbb ; 
+--c41:#666666 ;
+--c42:#666666 ; 
+--c43:#666666 ; 
+--c44:#666666 ; 
+--c45:#666666 ; 
+--c46:#BA2121 ;
+--c47:#BA2121 ; 
+--c48:#BA2121 ; 
+--c49:#BA2121 ; 
+--c50:#BA2121 ; 
+--c51:#BA2121 ;
+--c52:#BB6622 ; 
+--c53:#BA2121 ; 
+--c54:#BB6688 ; 
+--c55:#008000 ; 
+--c56:#BB6688 ;
+--c57:#BA2121 ; 
+--c58:#19177C ; 
+--c59:#008000 ; 
+--c60:#0000FF ; 
+--c61:#19177C ;
+--c62:#19177C ; 
+--c63:#19177C ; 
+--c64:#19177C ; 
+--c65:#666666 ; 
+--c66:transparent ;
+--c67:#404040 ; 
+--c68:#404040 ; 
+--c69:transparent ; 
+--c70:transparent ; 
+--c71:transparent ;
+--c72:#FF0000 ; 
+--c73:#000080 ; 
+--c74:#888888 ; 
+--c75:#000080 ; 
+--c76:#0044DD ;
+}
+}
+
+.highlight .hll { background-color: var(--c1) }
+.highlight  { background: transparent; color: var(--c3)} /* CHANGED TO TRANSPARENT */
+.highlight .c { color: var(--c4); font-style: italic } /* Comment */
+.highlight .err { color: var(--c5); background-color: var(--c6); border: 1px solid var(--c7) } /* Error */
+.highlight .k { color: var(--c8); font-weight: bold } /* Keyword */
+.highlight .o { color: var(--c9) } /* Operator */
+.highlight .ch { color: var(--c10); font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: var(--c11); font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: var(--c12) } /* Comment.Preproc */
+.highlight .cpf { color: var(--c13); font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: var(--c14); font-style: italic } /* Comment.Single */
+.highlight .cs { color: var(--c15); font-style: italic } /* Comment.Special */
+.highlight .gd { color: var(--c16) } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gi { color: var(--c17) } /* Generic.Inserted */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: var(--c18); font-weight: bold } /* Generic.Subheading */
+.highlight .kc { color: var(--c19); font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: var(--c20); font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: var(--c21); font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: var(--c22) } /* Keyword.Pseudo */
+.highlight .kr { color: var(--c23); font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: var(--c24) } /* Keyword.Type */
+.highlight .m { color: var(--c25) } /* Literal.Number */
+.highlight .s { color: var(--c26) } /* Literal.String */
+.highlight .na { color: var(--c27) } /* Name.Attribute */
+.highlight .nb { color: var(--c28) } /* Name.Builtin */
+.highlight .nc { color: var(--c29); font-weight: bold } /* Name.Class */
+.highlight .no { color: var(--c30) } /* Name.Constant */
+.highlight .nd { color: var(--c31) } /* Name.Decorator */
+.highlight .ni { color: var(--c32); font-weight: bold } /* Name.Entity */
+.highlight .ne { color: var(--c33); font-weight: bold } /* Name.Exception */
+.highlight .nf { color: var(--c34) } /* Name.Function */
+.highlight .nl { color: var(--c35) } /* Name.Label */
+.highlight .nn { color: var(--c36); font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: var(--c37); font-weight: bold } /* Name.Tag */
+.highlight .nv { color: var(--c38) } /* Name.Variable */
+.highlight .ow { color: var(--c39); font-weight: bold } /* Operator.Word */
+.highlight .w { color: var(--c40) } /* Text.Whitespace */
+.highlight .mb { color: var(--c41) } /* Literal.Number.Bin */
+.highlight .mf { color: var(--c42) } /* Literal.Number.Float */
+.highlight .mh { color: var(--c43) } /* Literal.Number.Hex */
+.highlight .mi { color: var(--c44) } /* Literal.Number.Integer */
+.highlight .mo { color: var(--c45) } /* Literal.Number.Oct */
+.highlight .sa { color: var(--c46) } /* Literal.String.Affix */
+.highlight .sb { color: var(--c47) } /* Literal.String.Backtick */
+.highlight .sc { color: var(--c48) } /* Literal.String.Char */
+.highlight .dl { color: var(--c49) } /* Literal.String.Delimiter */
+.highlight .sd { color: var(--c50); font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: var(--c51) } /* Literal.String.Double */
+.highlight .se { color: var(--c52); font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: var(--c53) } /* Literal.String.Heredoc */
+.highlight .si { color: var(--c54); font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: var(--c55) } /* Literal.String.Other */
+.highlight .sr { color: var(--c56) } /* Literal.String.Regex */
+.highlight .s1 { color: var(--c57) } /* Literal.String.Single */
+.highlight .ss { color: var(--c58) } /* Literal.String.Symbol */
+.highlight .bp { color: var(--c59) } /* Name.Builtin.Pseudo */
+.highlight .fm { color: var(--c60) } /* Name.Function.Magic */
+.highlight .vc { color: var(--c61) } /* Name.Variable.Class */
+.highlight .vg { color: var(--c62) } /* Name.Variable.Global */
+.highlight .vi { color: var(--c63) } /* Name.Variable.Instance */
+.highlight .vm { color: var(--c64) } /* Name.Variable.Magic */
+.highlight .il { color: var(--c65) } /* Literal.Number.Integer.Long */
+
+.highlight .l { color: var(--c66) } /* Literal */
+.highlight .n { color: var(--c67) } /* Name */
+.highlight .p { color: var(--c68) } /* Punctuation */
+.highlight .ld { color: var(--c69) } /* Literal.Date */
+.highlight .nx { color: var(--c70) } /* Name.Other */
+.highlight .py { color: var(--c71) } /* Name.Property */
+
+.highlight .gr { color: var(--c72) } /* Generic.Error */
+.highlight .gh { color: var(--c73); font-weight: bold } /* Generic.Heading */
+.highlight .go { color: var(--c74) } /* Generic.Output */
+.highlight .gp { color: var(--c75); font-weight: bold } /* Generic.Prompt */
+.highlight .gt { color: var(--c76) } /* Generic.Traceback */
+
+

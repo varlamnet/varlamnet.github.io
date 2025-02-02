@@ -1,0 +1,92 @@
+---
+layout: default
+title: Random Forest
+permalink: /nn.html
+---
+<style>
+svg {
+    vertical-align: top;
+    height: 250px;
+    width: 400px;
+    cursor: default;
+    user-select: none;
+}
+canvas {
+  cursor: pointer;
+}
+.content-container {
+  text-align: center;
+}
+.content-container-row {
+  text-align: center;
+}
+.content-container-cell {
+  display: inline-block;
+}
+.control-panel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.control-row {
+  margin-bottom: 7px;
+}
+.control-cell {
+  text-align: center;
+}
+.control-cell-full {
+  text-align: center;
+}
+.btn{
+  background-color:rgb(250, 200, 0); color: #202020;
+}
+.btn:hover{
+  background-color:#7000ac;color: white;
+}
+.btn {
+  width: 250px;
+  margin: 8px auto;
+  padding: 10px 16px 10px 16px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
+  cursor: pointer;
+}
+#neural-net {
+  width: 300px;
+  min-width: 300px;
+  height: 250px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+#data-canvas, .loss-plot-canvas {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+#data-canvas {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 250px;
+  height: 250px;
+  min-width: 250px;
+}
+.loss-plot-canvas {
+  width: 500px;
+  height: 100px;
+  cursor: default;
+  background-color: var(--headbackcol);
+}
+@media screen and (max-width: 500px) {
+  .loss-plot-canvas {
+    width: 300px;
+    height: 50px;
+  }
+}
+</style>
+
+
+<div class="text-center">
+  <h1>Simple Neural Net</h1> <br>
+</div>
+
+<script src="assets/js/nn.js"></script>

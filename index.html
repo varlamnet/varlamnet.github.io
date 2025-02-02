@@ -1,0 +1,496 @@
+---
+layout: page
+title:
+subtitle:
+---
+<style>
+  img:hover {
+    filter: drop-shadow(0px 0px 5px var(--footertextcol));
+  }
+
+  .card-img-top {
+    filter: grayscale(50%);
+  }
+
+  .roundedpic {
+    border-radius: 25%;
+  }
+
+  .wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .wrapper>* {
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: left;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-gap: 20px;
+  }
+
+  .item1 {
+    grid-column: col-start 1 / span 3;
+    grid-row: 1 / 9;
+  }
+
+  .item2 {
+    grid-column: col-start 4 / span 9;
+    grid-row: 1 / 9;
+  }
+
+  .badge {
+    padding: 3px 8px 5px;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: var(--headbackcol);
+    border-radius: 9px;
+  }
+
+  .badge:hover,
+  .badge:focus {
+    color: var(--headbackcol);
+    background-color: var(--footertextcol);
+    cursor: pointer;
+  }
+
+  .card {
+    color: inherit;
+    background-color: var(--headbackcol);
+    border-radius: 5px;
+  }
+
+  .col-md-9 {
+    max-width: 80%;
+    flex-basis: 500%;
+  }
+
+  .modal-content {
+    background-color: var(--headbackcol);
+  }
+
+  input,
+  textarea {
+    background-color: var(--footertextcol);
+    width: 90%;
+  }
+
+  ::placeholder {
+    color: var(--backcol);
+    opacity: 1;
+  }
+
+  .row {
+    flex-wrap: nowrap;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+  }
+
+  .img-fluid {
+    max-height: 10rem;
+  }
+
+  .htrans {
+    color: inherit;
+  }
+
+  .htrans:hover {
+    color: inherit;
+  }
+
+  .htrans:hover {
+    color: inherit;
+  }
+
+  .htrans:focus {
+    color: inherit;
+  }
+
+  @media screen and (max-width: 550px) {
+    .wrapper {
+      justify-content: center;
+    }
+
+    .item1 {
+      max-height: 300px;
+    }
+
+    .item2 {
+      text-align: center;
+    }
+
+    .card {
+      margin: 0 auto;
+      /* Added */
+      float: none;
+      /* Added */
+      margin-bottom: 10px;
+      /* Added */
+      width: 100%;
+    }
+
+    .img-fluid {
+      display: none;
+    }
+
+    .col-md-9 {
+      max-width: 100%;
+    }
+  }
+</style>
+
+
+<p style="margin-bottom:-1.5cm;"></p>
+<div class="wrapper">
+  <div class="item1">
+    <center>
+      <p><img class="roundedpic" src="assets/img/mainpic.png" alt="Profile pic"
+          style="width:250px;border:0px solid black" data-toggle="tooltip" data-placement="left" title="👋"></p>
+    </center>
+  </div>
+  <div class="item2">
+    <a style="font-size:35px;">Varlam Kutateladze</a> <br>
+    <!-- <a>PhD Candidate in Economics</a> <br> -->
+    <span style="display:block; height: 10px;"></span>
+
+    <a class="socialcolor" href="mailto:{{ site.social-network-links.email }}" data-toggle="tooltip"
+      data-placement="auto" title="info [at] varlam [dot] net">
+      <i class="fas fa-envelope fa-2x"></i></a>
+    &nbsp;&nbsp;
+    <a class="socialcolor" href="https://github.com/{{ site.social-network-links.github }}" data-toggle="tooltip"
+      data-placement="auto" title="{{ site.social-network-links.github }}">
+      <i class="fab fa-github fa-2x"></i></a>
+    <span style="padding-left:0"></span>
+
+    <span style="display:block; height: 10px;"></span>
+
+    <!-- <span data-toggle="tooltip" data-placement="auto" title="Short CV">
+      <a href="/pdfs/CV.pdf" type="button" class="btn btn-new btn-sm"><i class="fas fa-file-pdf fa-lg"></i><b> CV</b></a> 
+    </span> -->
+
+    <span style="display:block; height: 10px;"></span>
+    <div class="typewriter">
+      <div class="typewriter-text">Welcome! 👋</div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <span style="display:block; height: 15px;"></span>
+  <a style="font-size:24px;"><i class="fas fa-star"></i><b> Research area</b></a>
+  <span style="display:block; height: 15px;"></span>
+  <span class="badge">Machine Learning</span>
+  <span class="badge">High-Dimensional Statistics</span>
+  <!-- <span class="badge">Forecasting</span> -->
+  </div>
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 30px;"></span>
+<!-- <hr style="border-top: 1px solid grey"> -->
+
+<a style="font-size:24px;"><i class="fas fa-cubes"></i><b> Apps</b></a>
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+
+<div class="card-deck">
+  <div class="card">
+    <a href="https://share.streamlit.io/varlamnet/torchstyle/streamlit/app.py">
+      <img src="assets/img/capitol.gif" class="card-img-top" data-toggle="tooltip" data-placement="top"
+        title="Neural Transfer app that trains VGG19-net in real time to stylize images!">
+    </a>
+    <div class="card-body">
+      <h3 class="card-title">Neural Transfer</h3>
+      <p class="card-text">PyTorch Edition</p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="/rf.html">
+      <img src="assets/img/rf.gif" class="card-img-top" data-toggle="tooltip" data-placement="top"
+        title="Like it says -- Random Forest!">
+    </a>
+    <div class="card-body">
+      <h3 class="card-title">Random Forest</h3>
+      <p class="card-text">Interactive illustration</p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="/nn.html">
+      <img src="assets/img/nn.gif" class="card-img-top" data-toggle="tooltip" data-placement="top"
+        title="Feedforward neural net!">
+    </a>
+    <div class="card-body">
+      <h3 class="card-title">Simple NN</h3>
+      <p class="card-text">Train it yourself</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Transfer-->
+<div class="modal fade bd-example-modal-lg" id="Transfer" tabindex="-1" role="dialog" aria-labelledby="TransferTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TransferTitle">Neural Transfer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body" style="display:block; padding:30px">
+        I made a simple ✦<b>Neural Transfer app</b>✦ (applies the style of one image to another) via Streamlit and
+        deployed it on Heroku for free. You can upload your own images and the network will be trained in real time!
+        <br><br>
+
+        Since the server is free, there are some constraints. For example, I could not use VGG19-net because its weights
+        are too large, so had to switch to Alexnet. That's why the performance may not be too impressive. It also runs
+        slow, but does the job eventually.
+        <br><br>
+
+        <span data-toggle="tooltip">
+          <a href="https://torchstyle.herokuapp.com/" type="button" class="btn btn-new btn-sm"><i
+              class="fas fa-dice-d6 fa-lg"></i><b> App</b></a>
+        </span>
+        <span style="padding-left:20px"></span>
+        <span data-toggle="tooltip"></span>
+        <a href="https://github.com/varlamnet/torchstyle" type="button" class="btn btn-new btn-sm"><i
+            class="fas fa-code fa-lg"></i><b> Code</b></a>
+        </span>
+        <br>
+        <hr style="border-top: 1px solid grey">
+        <i class="fas fa-star fa-lg"></i> <i>Update</i> <i class="fas fa-star fa-lg"> </i> <br><br>
+        Streamlit sent me a sharing invite so I deployed the app there as well. The server runs faster than Heroku and
+        has less stringent requirements, so now the app sports VGG19!
+        <br><br>
+
+        <span data-toggle="tooltip">
+          <a href="https://share.streamlit.io/varlamnet/torchstyle/streamlit/app.py" type="button"
+            class="btn btn-new btn-sm"><i class="fas fa-dice-d6 fa-lg"></i><b> App</b></a>
+        </span>
+        <span style="padding-left:20px"></span>
+        <span data-toggle="tooltip"></span>
+        <a href="https://github.com/varlamnet/torchstyle/tree/streamlit" type="button" class="btn btn-new btn-sm"><i
+            class="fas fa-code fa-lg"></i><b> Code</b></a>
+        </span><br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Transfer-->
+
+<!-- LINE & JUMP -->
+<!-- <span style="display:block; height: 20px;"></span> -->
+<!-- <hr style="border-top: 1px solid grey"> -->
+
+<!-- <i class="fas fa-check"></i><b> Books </b><span style="display:block; height: 15px;"></span> -->
+
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 50px;"></span>
+<!-- <hr style="border-top: 1px solid grey"> -->
+
+<a style="font-size:24px;"><i class="fas fa-pen-nib"></i> Notes</a>
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2025-01-01-Transformers/">Transformers</a></h3>
+        <p class="card-text">Use Attention</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2025-01-01-Transformers/" class="post-image">
+        <img src="assets/img/transf2.jpeg" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2024-12-01-Attention/">Attention</a></h3>
+        <p class="card-text">For Transformers</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2024-12-01-Attention/" class="post-image">
+        <img src="assets/img/soft.jpg" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2022-06-01-Kalman-Filter/">Kalman Filter</a></h3>
+        <p class="card-text">And state space modeling</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2022-06-01-Kalman-Filter/" class="post-image">
+        <img src="assets/img/kf.png" href="#" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div></a>
+</div>
+
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2021-08-01-Logistic/">Logistic Regression vs AutoML</a></h3>
+        <p class="card-text">For spam detection</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2021-08-01-Logistic/" class="post-image">
+        <img src="assets/img/spam.png" href="#" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div></a>
+</div>
+
+
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="/2020-10-01-PyTorch-Mnist/">PyTorch Basics</a></h3>
+        <p class="card-text">MNIST classification</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-10-01-PyTorch-Mnist/" class="post-image">
+        <img src="assets/img/pytorch.png" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-09-01-High-dimensions/">Statistics in high dimensions</a>
+        </h3>
+        <p class="card-text">What could go wrong?</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-09-01-High-dimensions/" class="post-image">
+        <img src="assets/img/cov.png" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-08-01-Stein/">Stein's Paradox</a></h3>
+        <p class="card-text">Beat ordinary estimators</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-08-01-Stein/" class="post-image">
+        <img src="assets/img/stein.jpg" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-07-01-Random-forest/">Random Forest</a></h3>
+        <p class="card-text">Foundations</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div class="center">
+      <a href="2020-07-01-Random-forest/" class="post-image">
+        <img src="assets/img/forest.png" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LINE & JUMP -->
+<span style="display:block; height: 20px;"></span>
+
+<div class="card mb-1">
+  <div class="row no-gutters" style="justify-content:space-between">
+    <div class="col-md-9">
+      <div class="card-body">
+        <h3 class="card-title"><a class="htrans" href="2020-06-15-Nonparametric/">Nonparametric estimation</a></h3>
+        <p class="card-text">Nadaraya-Watson and other basics</p>
+        <!-- <p class="card-text"><small class="text-muted">New </small></p> -->
+      </div>
+    </div>
+    <div style="text-align: right">
+      <a href="2020-06-15-Nonparametric/" class="post-image">
+        <img src="assets/img/nonparametric.png" class="img-fluid rounded-start" alt="...">
+      </a>
+    </div>
+  </div>
+</div>

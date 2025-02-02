@@ -1,0 +1,65 @@
+
+title: Varlam.net
+description: varlam.net
+author: Varlam
+navbar-links:
+  Research : "Working"
+  Teaching: "Teaching"
+social-network-links:
+  # email: "varlam.net"
+  github: varlamnet
+  # twitter: varlamnet
+  # reddit: varlamnet
+# share-links-active:
+#   twitter: true
+#   facebook: true
+#   linkedin: true
+url-pretty: "varlam.net"
+excerpt_length: 0
+navbar-col: "
+navbar-text-col: "
+navbar-border-col: "
+page-col: "
+text-col: "
+link-col: "
+hover-col: "
+footer-col: "
+footer-text-col: "
+footer-link-col: "
+title-separator: "-"
+date_format: "%B %-d, %Y"
+timezone: "America/Vancouver"
+markdown: kramdown
+highlighter: rouge
+permalink: /:year-:month-:day-:title/
+paginate: 5
+kramdown:
+  input: GFM
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true  
+      social-share: true 
+      readtime: false 
+  -
+    scope:
+      path: "" 
+    values:
+      layout: "page"
+      show-avatar: true
+exclude:
+  - CHANGELOG.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - screenshot.png
+  - docs/
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
