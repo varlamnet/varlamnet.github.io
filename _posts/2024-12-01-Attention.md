@@ -46,7 +46,7 @@ Formally, attention is defined as,
 
 $$Attention(Q, K, V) = \text{softmax}(\frac{Q K^T}{\sqrt{d_k}})V, $$
 
-where $Q \in\mathbb{R}^{n\times d_{model}}$, $K \in\mathbb{R}^{n\times d_{model}}$, $V \in\mathbb{R}^{n\times d_{model}}$.
+where $Q \in\mathbb{R}^{n\times d_{model}}$, $K \in\mathbb{R}^{n\times d_{model}}$, $V \in\mathbb{R}^{n\times d_{model}}$. Note that for single-head attention, $d_k = d_{model}$ since the full embedding space is used.
 
 - $Q$ represent the user query or question and is used to determine the relevance of other words.
 - $K$ stores the answers to other queries and is used to measure similarity of the query to other queries.
@@ -86,7 +86,7 @@ Notice that the attention scores and weights are $n \times n$ (sequence length) 
 
 $$\begin{matrix}  \textit{baseball} & [1.76 & .24 & 0]\\ \textit{bat} & [1.50 & .50 & 0] \end{matrix}$$
 
-Hence, the embedding vector for bat is now "pulled" towards baseball and the model can infer that _"bat"_ probably refers to a wooden object rather than an animal. This is how attention injects the contextual information.
+The output for "bat" is a weighted average: $.5 \times [2, 0, 0] + .5 \times [1, 1, 0] = [1.5, .5, 0]$ (the equal weights reflect equal similarity to itself and to "baseball"). Hence, the embedding vector for bat is now "pulled" towards baseball and the model can infer that _"bat"_ probably refers to a wooden object rather than an animal. This is how attention injects the contextual information.
 
 Or in code (with deepseek's help),
 
@@ -101,17 +101,18 @@ class ScaledDotProductAttention(nn.Module):
     def forward(self, Q, K, V, mask=None, dropout=None):
         """
         Forward pass for scaled dot-product attention.
+        Supports both single-head and multi-head inputs.
 
         Args:
-            Q (torch.Tensor): Query shape (batch, n_heads, seq_len, d_k).
-            K (torch.Tensor): Key shape (batch, n_heads, seq_len, d_k).
-            V (torch.Tensor): Value shape (batch, n_heads, seq_len, d_k).
-            mask (torch.Tensor, optional): Mask padding or future tokens.
+            Q (torch.Tensor): Query tensor, shape (..., seq_len, d_k) where ... can be (batch,) for single-head or (batch, n_heads) for multi-head.
+            K (torch.Tensor): Key tensor, same shape as Q.
+            V (torch.Tensor): Value tensor, same shape as Q.
+            mask (torch.Tensor, optional): Mask for padding or future tokens.
             dropout (nn.Dropout, optional): Dropout layer.
 
         Returns:
-            torch.Tensor: Output shape (batch, n_heads, seq_len, d_k).
-            torch.Tensor: Att'n weights shape (batch, n_heads, seq_len, seq_len).
+            torch.Tensor: Output tensor, same shape as input Q.
+            torch.Tensor: Attention weights, shape (..., seq_len, seq_len).
         """
         d_k = Q.shape[-1]
         scores = (Q @ K.transpose(-2, -1)) / math.sqrt(d_k)
@@ -145,6 +146,14 @@ Note,
 **Self-attention** is used in both encoder and decoder of the transformer. In encoder it can look both backwards and forward in the sequence to determine the importance. In decoder it can only look backwards to avoid leaking information when generating output.
 In addition, there is also **cross-attention** in decoder -- it takes the decoder's query but key & values come from encoder.
 
+### Masking and Cross-Attention
+
+**Masking:** In the transformer decoder, causal masking ensures that during generation, the model only attends to previous tokens and not future ones. This is achieved by masking (setting to `-inf`) the upper triangular part of the attention scores matrix before applying softmax. In the encoder, no such masking is needed since the entire input is available.
+
+**Cross-Attention:** In the decoder, cross-attention layers allow the decoder to attend to the encoder's output. Here, queries come from the decoder's previous layer, while keys and values are derived from the encoder's final output. This enables the model to incorporate information from the input sequence when generating the output.
+
+These mechanisms are essential for the autoregressive nature of the decoder and for connecting encoder and decoder in seq2seq tasks.
+
 ## Multi-Head Attention
 
 Compared to single-head attention, multi-head attention adds 2 important features,
@@ -160,7 +169,7 @@ $$MultiHead(Q, K, V) = Concat(head_1, \ldots, head_{h}) \, W^O,$$
 $$head_i = Attention(Q W^Q_i, \, K W^K_i, \, V W^V_i)$$
 
 where $Q \in\mathbb{R}^{n\times d_{q}}$, $K \in\mathbb{R}^{n\times d_{k}}$, $V \in\mathbb{R}^{n\times d_{v}}$ and $d_k = d_q  = d_v = d_{model}/h$.
-Learnable projection weights are $W^Q_i \in\mathbb{R}^{d_{model}\times d_q}$, $W^K_i \in\mathbb{R}^{d_{model}\times d_k}$, $W^V_i \in\mathbb{R}^{d_{model}\times d_v}$, and $W^O_i \in\mathbb{R}^{d_{model}\times d_{model}}$.
+Learnable projection weights are $W^Q_i \in\mathbb{R}^{d_{model}\times d_q}$, $W^K_i \in\mathbb{R}^{d_{model}\times d_k}$, $W^V_i \in\mathbb{R}^{d_{model}\times d_v}$, and $W^O \in\mathbb{R}^{d_{model}\times d_{model}}$. Note that in the original paper, separate projection matrices are used for each head, but in practice (as in the code below), shared linear layers are used for efficiency.
 
 Code implementation below.
 
@@ -231,7 +240,7 @@ class MultiHeadAttention(nn.Module):
 
 ## ~~Not So~~ Recent developments
 
-Notice that self-attention computation time is $O(n^2)$ with respect to input sequence length $n$. As transformers have started getting larger, there is been some effort to try to improve that.
+Notice that self-attention computation time is $O(n^2)$ with respect to input sequence length $n$. As transformers have started getting larger, there have been some efforts to try to improve that.
 
 - Sparse attention -- e.g., see [this paper on sparse factorization of Attention matrix](https://arxiv.org/pdf/1904.10509).
 - Sliding window attention -- e.g., [Longformer paper](https://arxiv.org/pdf/2004.05150) that attempts to reduce attention matrix computation to $O(n)$.

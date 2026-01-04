@@ -56,7 +56,7 @@ $d_v := d_{model}/n_{heads}$ -- value matrix dimension.
 ## Embeddings
 
 Embeddings are not a novel idea, e.g., they were already used in word2vec representations in 2013.
-But word2vec embeddings were static and wound not change depending on the context, e.g., some words have different meaning depending on the context -- a bat could be an animal or a wooden object. To pass in the context, it is essential to encode the contextual information into the embedding. RNN tackled this by encoding this context that was then passed as input to decoder. However, this contextual signal was not strong enough to persist in longer sentences, and so attention was introduced sometime in 2014-2015.
+But word2vec embeddings were static and would not change depending on the context, e.g., some words have different meaning depending on the context -- a bat could be an animal or a wooden object. To pass in the context, it is essential to encode the contextual information into the embedding. RNN tackled this by encoding this context that was then passed as input to decoder. However, this contextual signal was not strong enough to persist in longer sentences, and so attention was introduced sometime in 2014-2015.
 
 Instead of one-hot encoding words (or its pieces), Transformers encode words with embeddings. Namely, words are first mapped to integers (e.g., label encoded), and then these integers are mapped into some (initially random) points in $d_{model}$-dimensional space. Embeddings effectively act as a dictionary between this label encoded value and a vector in $d_{model}$ space. Hence each word is represented by a vector and this vector will be learned during training.
 
@@ -180,7 +180,7 @@ Layer normalization is essential for stabilizing and improving learning. Unlike 
 
 $$\hat{x}_i = \frac{x_i - \hat{\mu}}{\hat{\sigma} + \epsilon},$$
 
-where $\hat{\mu}$ and $\hat{\sigma}$ are the mean and standard deviation calculated over $d_{model}$ dimensions. This normalization may be too restrictive, so in practice it is common to add a multiplicative and additive learnable parameters, i.e., the output becomes $\gamma \hat{x}_i + \beta$.
+where $\hat{\mu}$ and $\hat{\sigma}$ are the mean and standard deviation calculated over $d_{model}$ dimensions. This normalization may be too restrictive, so in practice it is common to add multiplicative and additive learnable parameters, i.e., the output becomes $\gamma \hat{x}_i + \beta$.
 
 ```python
 class LayerNorm(nn.Module):
@@ -278,7 +278,7 @@ class EncoderStack(nn.Module):
     def __init__(self, d_model: int, layers: nn.ModuleList):
         super().__init__()
         self.layers = layers
-        self.norm = LayerNormalization(d_model)
+        self.norm = LayerNorm(d_model)
 
     def forward(self, x, mask):
         for layer in self.layers:
@@ -331,7 +331,7 @@ class DecoderStack(nn.Module):
     def __init__(self, d_model: int, layers: nn.ModuleList):
         super().__init__()
         self.layers = layers
-        self.norm = LayerNormalization(d_model)
+        self.norm = LayerNorm(d_model)
 
     def forward(self, x, encoder_output, src_mask, tgt_mask):
         for layer in self.layers:
@@ -343,7 +343,7 @@ class DecoderStack(nn.Module):
 
 ## Projection Layer
 
-Decoder stack will output vectors in embedding space (not words). Hence, we need to "project" these vectors back into words space to retrieve the words from the embedding vocabulary, which originally helped us map words (integers) into embeddings. This is done with a simple linear layer which is then followed by a softmax to get the probabilities.
+Decoder stack will output vectors in embedding space (not words). Hence, we need to "project" these vectors back into words space to retrieve the words from the embedding vocabulary, which originally helped us map words (integers) into embeddings. This is done with a simple linear layer which is then followed by softmax to get the probabilities.
 
 ```python
 class ProjectionLayer(nn.Module):
@@ -403,3 +403,19 @@ class Transformer(nn.Module):
 ```
 
 <span style="display:block; height: 0px;"></span>
+
+## Training and Inference
+
+The transformer is trained on sequence-to-sequence tasks, such as machine translation. During training:
+
+- The source sequence is passed through the encoder to get contextual representations.
+- The target sequence (shifted by one position) is fed into the decoder, which attends to both its own masked self-attention and the encoder's output via cross-attention.
+- Masks are applied: `src_mask` for padding in the source, `tgt_mask` for causal masking in the decoder (upper triangular to prevent future token leakage).
+- The loss is computed using cross-entropy between predicted logits and ground truth target tokens.
+
+During inference (autoregressive generation):
+
+- Start with a start-of-sequence token.
+- Encode the source once.
+- For each step, decode the current sequence, project to probabilities, sample the next token, and append it.
+- Continue until an end-of-sequence token is generated.
