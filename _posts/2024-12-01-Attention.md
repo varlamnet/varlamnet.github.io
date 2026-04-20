@@ -15,7 +15,7 @@ $$\DeclareMathOperator*{\argmin}{arg\,min}$$
 $$\DeclareMathOperator*{\argmax}{arg\,max}$$
 $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
 $$\DeclareMathOperator*{\V}{\mathbb{V}}$$
-$$\DeclareMathOperator*{\x}{\mathbb{x}}$$
+$$\DeclareMathOperator*{\x}{\mathbf{x}}$$
 
 <!-- MathJAx End -->
 <p style="margin-bottom:-2cm;"></p>
@@ -46,17 +46,17 @@ Formally, attention is defined as,
 
 $$Attention(Q, K, V) = \text{softmax}(\frac{Q K^T}{\sqrt{d_k}})V, $$
 
-where $Q \in\mathbb{R}^{n\times d_{model}}$, $K \in\mathbb{R}^{n\times d_{model}}$, $V \in\mathbb{R}^{n\times d_{model}}$. Note that for single-head attention, $d_k = d_{model}$ since the full embedding space is used.
+where $Q \in\mathbb{R}^{n\times d_{model}}$, $K \in\mathbb{R}^{n\times d_{model}}$, $V \in\mathbb{R}^{n\times d_{model}}$. For single-head attention, $d_k = d_{model}$ since the full embedding space is used (in practice, even the single-head case is preceded by learnable $W^Q,W^K,W^V$ projections — see multi-head below).
 
 - $Q$ represent the user query or question and is used to determine the relevance of other words.
 - $K$ stores the answers to other queries and is used to measure similarity of the query to other queries.
 - $V$ are the actual answers stored and are weighted based on similarity of $Q$ and $K$ to generate the final output.
 
-Matrix $\frac{Q K^T}{\sqrt{d_k}}$ is known as **attention scores**. These represent (scaled) dot products and hence measure how close the words are in the embedding space. The division by $\sqrt{d_k}$ is to counterbalance the growing values of the dot product when $d_k$ dimension is large and thus stabilize the gradient.
+Matrix $\frac{Q K^T}{\sqrt{d_k}}$ is known as **attention scores**. These represent (scaled) dot products and hence measure how close the words are in the embedding space. The $\sqrt{d_k}$ scaling has a variance argument behind it: if the entries of $Q$ and $K$ are independent with unit variance, then $Q_i\cdot K_j$ has variance $d_k$. Dividing by $\sqrt{d_k}$ keeps scores at unit variance — without it, large $d_k$ pushes softmax into saturated regions where gradients vanish.
 
 When softmax is applied, $\text{softmax}(\frac{Q K^T}{\sqrt{d_k}})$ provides **attention weights**. This is simply an $n\times n$ matrix, where $n$ is the sequence length (number of words), and is often visualized to gain insights about how the model thinks. Softmax ensures that each row sums to 1 and hence these values can be seen as weights. The entry $a_{ij}$ will characterized the "share" of similarity between words $i$ and $j$, with $\sum_j a_{ij} = 1$. The attention weight matrix is what fills each word in a sentence with contextual information.
 
-Notice that, in case of **self-attention**, i.e., when all three inputs are equal $Q=K=V$, the output of attention is simply a weighted average of the input, where the weight is determined by the similarity of the input with itself. In other words, $i$th self-attention of the input vector $\x$ is simply $a_i = \sum_j f(\x_i^T \x_j) \x_j$, where $f$ is the softmax function. Put this way, this hints to similarities with the kernel regression, which is a topic for another discussion.
+Notice that, in case of **self-attention**, i.e., when all three inputs are equal $Q=K=V$, the output of attention is simply a weighted average of the input, where the weight is determined by the similarity of the input with itself. In other words, the $i$th self-attention of the input vector $\x$ is simply $a_i = \sum_j f(\x_i^T \x_j) \x_j$, where $f$ is the softmax function. This is structurally identical to Nadaraya-Watson kernel regression, with softmax playing the role of a data-dependent kernel — a useful lens for viewing attention as nonparametric smoothing in embedding space.
 
 ## Intuition
 
@@ -64,7 +64,7 @@ In a sentence, _"I bought a baseball bat"_, attention mechanism helps the model 
 
 Let's focus on words _"baseball"_ and _"bat"_ only. For the sake of this example, consider a 3-dimensional embedding space, where the 3 dimensions are responsible for "sports", "animal" and "other". The word _"baseball"_ would have an embedding vector of something like $(2, 0, 0)$, while _"bat"_ would have $(1, 1, 0)$, i.e., by itself alone it is difficult to tell whether _"bat"_ refers to an object (sports) or an animal. The attention will help disambiguate that.
 
-For simplicity, let's consider self-attention, in which we pass $(n, d_{model})$ input $Q=K=V$ cloned 3 times. Self-attention is computed in both encoder and decoder parts of transformer architecture. The initial key matrix with $n = 2$ and $d_k = d_q = d_{model}= 3$ is given as,
+For simplicity, let's consider self-attention, in which we pass $(n, d_{model})$ input $Q=K=V$ cloned 3 times. Self-attention is computed in both encoder and decoder parts of transformer architecture. The initial query matrix with $n = 2$ and $d_k = d_q = d_{model}= 3$ is given as,
 
 <center>
 <a style="padding: 1rem;">Query :</a>  
@@ -240,11 +240,13 @@ class MultiHeadAttention(nn.Module):
 
 ## ~~Not So~~ Recent developments
 
-Notice that self-attention computation time is $O(n^2)$ with respect to input sequence length $n$. As transformers have started getting larger, there have been some efforts to try to improve that.
+Self-attention is $O(n^2)$ in sequence length $n$. As transformers have grown, many variants and implementation tricks have emerged — some change the math, most change the implementation or the inference-time access pattern.
 
-- Sparse attention -- e.g., see [this paper on sparse factorization of Attention matrix](https://arxiv.org/pdf/1904.10509).
-- Sliding window attention -- e.g., [Longformer paper](https://arxiv.org/pdf/2004.05150) that attempts to reduce attention matrix computation to $O(n)$.
-- [Grouped-query attention](https://arxiv.org/pdf/2305.13245) builds on multi-query attention and accelerates attention computation by sharing key-value matrices between all heads.
+- **Sparse attention** — [Child et al.](https://arxiv.org/pdf/1904.10509) restrict each token to a fixed subset of others.
+- **Sliding window attention** — [Longformer](https://arxiv.org/pdf/2004.05150) reduces attention to $O(n)$ by attending only within a local window.
+- **Multi-query / grouped-query attention** — [MQA](https://arxiv.org/pdf/1911.02150) and [GQA](https://arxiv.org/pdf/2305.13245) share key-value projections across (groups of) heads, shrinking the KV cache at minimal quality cost. Used in Llama, Mistral, and most recent open-weight models.
+- **FlashAttention** — [Dao et al.](https://arxiv.org/pdf/2205.14135) keep $O(n^2)$ complexity but make the kernel IO-aware: the softmax is fused into the matmul and the full $n\times n$ attention matrix is never materialized in HBM. This is what modern training and inference stacks actually run.
+- **KV caching** — during autoregressive generation, keys and values from prior tokens are cached across decoding steps rather than recomputed. This is the single most important inference optimization and the reason GQA/MQA (which shrink the cache) matter in practice.
 
 <span style="display:block; height: 0px;"></span>
 

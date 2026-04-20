@@ -15,27 +15,25 @@ $$\DeclareMathOperator*{\argmin}{arg\,min}$$
 $$\DeclareMathOperator*{\argmax}{arg\,max}$$
 $$\DeclareMathOperator*{\E}{\mathbb{E}}$$
 $$\DeclareMathOperator*{\V}{\mathbb{V}}$$
-$$\DeclareMathOperator*{\x}{\mathbb{x}}$$
+$$\DeclareMathOperator*{\x}{\mathbf{x}}$$
 
 <!-- MathJAx End -->
 <p style="margin-bottom:-2cm;"></p>
 
 <p class="dropcap">T</p>ransformers consist of two stacks -- an encoder stack and a decoder stack. Each of these stacks is composed of $N=6$ identical layers that sequentially feed into each other.
 
-<center><p><img src="/assets/img/transformer.png" style="width:400px;border:0px solid black" data-toggle="tooltip" title="Tranformer Architecture proposed in 'Attention Is All You Need'" data-placement="auto" ></p></center>
+<center><p><img src="/assets/img/transformer.png" style="width:400px;border:0px solid black" data-toggle="tooltip" title="Transformer Architecture proposed in 'Attention Is All You Need'" data-placement="auto" ></p></center>
 
 Each layer in **encoder** has two sub-layers,
 
 - multi-head self-attention block,
-- feedforward neural network block,
-- residual connection around each of the sub-layers, followed by layer normalization, i.e., each sub-layer outputs $LayerNorm(x+Sublayer(x))$.
+- feedforward neural network block, with a residual connection around each sub-layer followed by layer normalization, i.e., each sub-layer outputs $LayerNorm(x+Sublayer(x))$.
 
 Each layer in **decoder** has three sub-layers,
 
-- multi-head masked self-attention block (masking ensures that predictions can only use the past information),
-- feedforward neural network block,
-- multi-head cross-attention block (takes encoder output key & value but its own query),
-- residual connection around each of the sub-layers, followed by layer normalization,
+- multi-head masked self-attention block (masking ensures predictions only use past information),
+- multi-head cross-attention block (takes encoder output key & value, its own query),
+- feedforward neural network block, again with a residual connection around each sub-layer followed by layer normalization.
 
 Finally, decoder output is linearly transformed to convert the predictions back from the embedding space and softmax is applied to generate the probability distribution.
 
@@ -120,11 +118,16 @@ class PE(nn.Module):
         return self.dropout(x)
 ```
 
+Sinusoidal PEs worked but have largely been replaced in modern LLMs by **relative** schemes that encode position inside the attention operation itself:
+
+- **RoPE** ([Su et al.](https://arxiv.org/pdf/2104.09864)) rotates $Q$ and $K$ by a position-dependent angle before the dot product, so attention scores depend on *relative* positions. Used in Llama, Mistral, GPT-NeoX, Qwen, and most recent open-weight models.
+- **ALiBi** ([Press et al.](https://arxiv.org/pdf/2108.12409)) skips positional encoding altogether and adds a linear penalty to attention scores proportional to token distance. Extrapolates well beyond training sequence lengths.
+
 <span style="display:block; height: 0px;"></span>
 
 ## Multi-head attention
 
-Embeddings and PEs are summed, and 4 copies are made. As can be seen in the transformer architecture graph above, three copies are passed into Encoder's **Multi-Head (self-)Attention** layer, whereas the fourth copy is passed into **Add & Norm** layer. Since the attention is multi-head, each of the 3 copies gets partitioned into $h$ parts across the embedding dimension. Attention mechanism is the key component of transformer architecture and is discussed in the <a href="../2024-12-01-Attention/" a>previous post</a>.
+Embeddings and PEs are summed, and 4 copies are made. As can be seen in the transformer architecture graph above, three copies are passed into Encoder's **Multi-Head (self-)Attention** layer, whereas the fourth copy is passed into **Add & Norm** layer. Since the attention is multi-head, each of the 3 copies gets partitioned into $h$ parts across the embedding dimension. Attention mechanism is the key component of transformer architecture and is discussed in the <a href="../2024-12-01-Attention/">previous post</a>.
 
 In the original transformer, there are 3 places where attention is computed:
 
@@ -196,6 +199,8 @@ class LayerNorm(nn.Module):
         return self.gamma * (x - mean) / (std + self.eps) + self.beta
 ```
 
+In modern LLMs (Llama, Mistral, PaLM, etc.) LayerNorm is often replaced by **RMSNorm** ([Zhang & Sennrich](https://arxiv.org/pdf/1910.07467)), which drops the mean subtraction and the additive $\beta$ bias: $\hat{x}_i = \gamma_i \cdot x_i / \sqrt{\tfrac{1}{d}\sum_j x_j^2 + \epsilon}$. It matches LayerNorm's stability benefits with fewer operations and parameters, which adds up meaningfully at scale.
+
 <span style="display:block; height: 0px;"></span>
 
 ## Residual Connection
@@ -213,7 +218,7 @@ class ResidualConnection(nn.Module):
         return x + self.dropout(sublayer(self.norm(x)))
 ```
 
-Notice that in the paper (and in the transformer plot) layer normalization happens after the residual connection, however in the code above this order is switched -- we first normalize and then add the residual connection. Most available code implementation stick with this approach.
+Notice that in the paper (and in the transformer plot) layer normalization happens *after* the residual connection ("post-norm"), however in the code above this order is switched — we normalize first and then add the residual ("pre-norm"). Pre-norm has largely replaced post-norm in practice: the residual path becomes an uninterrupted identity mapping, which improves gradient flow and lets the network train stably without the learning-rate warmup schedule the original paper required. See [Xiong et al.](https://arxiv.org/pdf/2002.04745) for a detailed analysis.
 
 <span style="display:block; height: 0px;"></span>
 
@@ -241,6 +246,8 @@ class FeedForwardNetwork(nn.Module):
         x = self.linear2(x)
         return x  # (batch, seq_len, d_model)
 ```
+
+In modern LLMs the ReLU FFN is largely replaced by **gated linear units**, most commonly **SwiGLU** ([Shazeer](https://arxiv.org/pdf/2002.05202)): $\text{FFN}(\x) = (\text{SiLU}(\x W_1) \odot \x W_3) W_2$. The extra projection $W_3$ costs parameters, but gating consistently improves quality, so $d_{ff}$ is typically shrunk (e.g., $d_{ff} \approx \tfrac{8}{3} d_{model}$ in Llama) to keep the parameter budget flat.
 
 <span style="display:block; height: 0px;"></span>
 
@@ -419,3 +426,15 @@ During inference (autoregressive generation):
 - Encode the source once.
 - For each step, decode the current sequence, project to probabilities, sample the next token, and append it.
 - Continue until an end-of-sequence token is generated.
+
+Naively, each decoding step recomputes attention over all prior tokens. In practice, we **cache the keys and values** from previous steps so that step $t$ only needs to compute $Q, K, V$ for the new token and attend against the cached $K, V$ — turning each step from $O(t^2)$ to $O(t)$. The memory footprint of this cache is linear in sequence length and is a primary bottleneck for long-context inference, which is why architectural variants like GQA/MQA and sliding-window attention (discussed in the <a href="../2024-12-01-Attention/">previous post</a>) matter so much.
+
+## A note on modern variants
+
+The original transformer is an encoder-decoder, well suited to seq2seq tasks like translation. Most modern LLMs, however, use just one of the two stacks:
+
+- **Decoder-only** (GPT, Llama, Mistral, Claude) — a single stack of masked self-attention + FFN blocks. Cross-attention is dropped; all conditioning happens through the prompt. This is the dominant architecture today.
+- **Encoder-only** (BERT, RoBERTa) — a single stack of bidirectional self-attention + FFN, used for classification and embedding tasks.
+- **Encoder-decoder** (T5, original Transformer) — still used where there is a clear source/target distinction.
+
+Beyond architectural slimming, a modern decoder-only stack typically combines **pre-norm + RMSNorm + SwiGLU + RoPE + GQA + KV caching + FlashAttention**. The 2017 transformer is closer to a historical reference point than a description of what actually gets trained today, but every one of these modern choices is a local swap into the same overall skeleton.
