@@ -97,9 +97,9 @@ The lowest single stable-rank values sit around 11 (gate at L14) and 14 (Q at L1
 
 <span style="display:block; height: 0px;"></span>
 
-## Marchenkov-Pastur distribution
+## Marchenko-Pastur distribution
 
-If you take an `out × in` matrix with i.i.d. zero-mean entries of variance σ², and form the sample covariance `(1/N) W^T W` with `N = max(out, in)` and `D = min(out, in)`, the **Marchenko-Pastur theorem** says the eigenvalues of that covariance concentrate on a known interval:
+If you take an $out \times in$ matrix with i.i.d. zero-mean entries of variance $\sigma^2$, and form the sample covariance $(1/N) W^T W$ with $N = max(out, in)$ and $D = min(out, in)$, the **Marchenko-Pastur theorem** says the eigenvalues of that covariance concentrate on a known interval:
 
 ```python
 def mp_edges(q, sigma2):
@@ -115,7 +115,7 @@ def mp_density(lam, q, sigma2):
     return out
 ```
 
-The bulk shape depends only on `q = D/N`. Anything above `λ_+ = σ²(1+√q)²` is structured signal that training carved out beyond what i.i.d. noise would produce. Counting those "signal" eigenvalues gives a cleaner notion of effective rank than energy heuristics.
+The bulk shape depends only on $q = D/N$. Anything above $λ_+ = \sigma^2(1+\sqrt{q})^2$ is structured signal that training carved out beyond what i.i.d. noise would produce. Counting those "signal" eigenvalues gives a cleaner notion of effective rank than energy heuristics.
 
 For Gemma 4's weights, this is what we see:
 
@@ -123,11 +123,11 @@ For Gemma 4's weights, this is what we see:
 
 The story splits into three regimes:
 
-**Random-like.** MLP `up` and `down` show a textbook MP bulk. About 6% of eigenvalues poke above the upper edge, carrying ~15–17% of energy. The rest of the spectrum is statistically indistinguishable from a trained random matrix.
+**Random-like.** MLP `up` and `down` show a textbook MP bulk. About 5-7% of eigenvalues poke above the upper edge, carrying ~15–20% of energy (`up`: 15%, `down`: 20%). The rest of the spectrum is statistically indistinguishable from a trained random matrix.
 
 **Bulk-and-spikes.** MLP `gate`, attention `K`, and `O` show an MP-shaped bulk plus a moderate signal layer above. K and O carry ~27–29% of their energy in spikes; gate ~23%.
 
-**Heavy-tailed.** Attention `Q` and `V` violate the MP assumption outright. The bulk doesn't fit — it's pinched far left of the MP curve, with a fat upper tail. This is a hallmark of training pushing the entry distribution itself away from Gaussian, in a way that produces a power-law eigenvalue density.
+**Heavy-tailed.** Attention `Q` and `V` both sit above the MP edge, but the violation differs in kind. For **Q**, the bulk itself is deformed: on average 12% of eigenvalues fall *below* the MP lower edge $λ_-$ (where the law predicts zero), meaning mass has shifted toward zero rather than spreading across $[λ_-, λ_+]$. For **V**, the bulk respects $λ_-$ -- only ~1% of eigenvalues land below it -- but V carries a few extremely dominant directions: the top eigenvalue averages 7× the noise floor. So Q's violation is bulk-deforming; V's is tail-confined.
 
 A per-layer view of "signal eigenvalues as a fraction of min dim" makes the regime split obvious:
 
@@ -170,7 +170,7 @@ Per-role mean α values:
 | down | 4.64 | layer 13 (α=2.85) | Approaching random |
 | up | **5.04** | layer 14 (α=2.89) | Random-like |
 
-So **V is the most heavy-tailed role on average**, but with the smallest spike count (2.2% of D) and lowest signal energy (10.4%). This is a different shape from Q: V has a continuous power-law tail rather than discrete dominant directions. Its top eigenvalue is large, but the tail decays smoothly without a clear "spike vs bulk" separation. That makes V a poor fit for hard low-rank truncation — there's no natural cutoff.
+So **V is the most heavy-tailed role on average**, but with the smallest signal count (2.2% of eigenvalues above $λ_+$) and lowest signal energy (10.4%). As established in §3, V's bulk respects the MP lower boundary; the violation is tail-confined -- a handful of extreme outliers reaching 7× the noise floor on average, sitting atop an otherwise passable MP bulk. That makes V a poor fit for hard low-rank truncation: those outliers carry only ~10% of energy, leaving 90% in the bulk with no natural cutoff.
 
 Q on the other hand has both a heavy tail *and* many spikes — a regime where the model has learned both a few dominant directions and a heavy continuum below them.
 
@@ -192,17 +192,28 @@ L14 is the most-trained layer for **Q, gate, and up** simultaneously. K's most-h
 
 ## Cross-layer subspace structure
 
-Singular value spectra describe one matrix at a time. To see how layers relate to each other, the natural object is the *subspace* each weight defines in the hidden space $R^{1536}$. For each Q projection, take the top-64 right singular vectors (an orthonormal basis for the dominant input subspace), then compare bases pairwise via mean squared cosine of principal angles:
+Singular value spectra describe one matrix at a time. To see how layers relate to each other, the natural object is the *subspace* each weight defines in the hidden space $R^{1536}$. For each Q projection, take the top-64 right singular vectors (an orthonormal basis for the dominant input subspace), then compare bases pairwise via mean cos² of principal angles. Both the unweighted version, $mean(cos^2θ_l)$, and a $\sigma^2$-weighted variant (which downweights noise directions by the geometric mean of the corresponding singular values) tell the same story:
 
-![Q-projection subspace similarity](/assets/img/07_subspace_q.png)
+![Q-projection subspace similarity](/assets/img/11_subspace_q_quantified.png)
 
-What stands out:
+Visually the structure is faint, but it sharpens once you anchor against the random baseline. Two random 64-dim subspaces in $R^{1536}$ have expected mean cos² of $64/1536 \approx 0.042$. So 0.042 is the floor; off-diagonal cells should be read as multiples of it.
 
-- **A block-diagonal pattern at sliding layers**: nearby sliding layers use highly aligned input subspaces. The sliding pattern is doing quasi-local processing on a stable axis.
-- **Globals are subspace outliers**: layers 4, 9, 14, 19, 24, 29, 34 stand apart from their neighbours. Their input subspaces are not just rotated versions of nearby slidings — they live in genuinely different directions.
-- **A discontinuity at layer 15** (the KV-share boundary): the second half of the model uses noticeably different Q subspaces from the first half.
+| Pair type | Unweighted | $\sigma^2$-weighted | × baseline |
+|---|---|---|---|
+| sliding ↔ adjacent sliding (\|i-j\|=1) | **0.157** | **0.182** | 3.8× |
+| global ↔ adjacent sliding | 0.118 | 0.133 | 2.8× |
+| sliding ↔ far sliding (\|i-j\|≥5) | 0.045 | 0.046 | 1.1× |
+| within first half (0..14, off-diag mean) | 0.063 | 0.066 | 1.5× |
+| within second half (15..34, off-diag mean) | 0.076 | 0.083 | 1.8× |
+| **across halves (first ↔ second)** | **0.042** | **0.043** | **1.0× — exactly random** |
 
-The overall picture: **Gemma 4 has structured, role-specific subspaces, not a continuous evolution across depth**. Globals reach into different parts of the hidden space than slidings. The KV-share boundary is also a subspace boundary.
+Three concrete findings, in order of strength:
+
+- **The KV-share boundary at layer 15 is a sharp subspace boundary.** Cross-half mean overlap sits *exactly* at the random baseline. The first and second halves of the decoder use Q-subspaces that are essentially uncorrelated — the second half is not a continuation of the first, it's pulling on genuinely different directions of the hidden space.
+- **Local sliding alignment is real but short-range.** Adjacent slidings share 3.8× more subspace energy than random; five layers away, alignment is back at baseline. The "block" of sliding structure is a 1-2 layer band, not a wide block of similar layers.
+- **Globals are mildly less aligned with their neighbours than slidings are with each other** — 2.8× vs 3.8×. They're outliers, but only modestly so.
+
+The $\sigma^2$-weighted variant agrees with the unweighted in direction and magnitude (slightly amplified differences), so the structure isn't an artifact of including noise directions in the basis.
 
 <span style="display:block; height: 0px;"></span>
 
@@ -232,20 +243,61 @@ A note on attention sinks: Gemma 4 puts only **0.4%** of attention mass on the f
 
 <span style="display:block; height: 0px;"></span>
 
+## Cross-layer KV cache overlap
+
+Earlier we looked at how Q *weights* relate across layers. The natural compression-side analogue is: do the K and V *caches* — the actual activation tensors stored at inference time — share subspace structure across layers? If they did, you could store one shared basis per cache type and per-layer coefficients, replacing `n × T × head_dim` floats with `head_dim × k + n × T × k` (~88% saving for typical `k`).
+
+For each pair of computing layers `(i, j)` with the same head_dim, take the cache tensor `[T, head_dim]` from a forward pass on the realistic prose, compute the top-`k` PCA basis of layer `i`'s cache, then measure what fraction of layer `j`'s cache variance lives in that basis. This is asymmetric (anchor → query) and directly compression-relevant: if `i`'s basis explains 90% of `j`, you can store `j` in `i`'s subspace at 10% reconstruction error.
+
+Using $k = 32$ for sliding (head_dim=256, ≈12.5% — close to the average MP signal count of ~16) and $k = 48$ for global (head_dim=512, ≈9.4% — close to the average MP signal count of ~41):
+
+![Cross-layer KV cache activation overlap](/assets/img/12_kv_activation_overlap.png)
+
+The picture is decisively negative for naive cross-layer factorisation:
+
+- **Diagonals** (a layer's own basis explaining its own cache) capture **53–75%** of variance — the expected ceiling at this `k`.
+- **Off-diagonals** (one layer's basis explaining another's cache) capture only **8–23%**, with most pairs sitting in 0.10–0.15. That's 1.5–2× the random baseline (random projections from a `k`-dim subspace into a `head_dim`-dim cache would explain `k/head_dim = 12.5%` or `9.4%` of variance for pure-noise data) — meaningfully above noise, but nowhere near "shareable."
+- **Best anchor's mean variance explained across the group: 0.18–0.29.** Not enough to share without losing most of the cache.
+
+So K and V caches do **not** live in a shared subspace across layers. Each computing layer has carved out its own ~k-dim slice of head_dim space, and those slices are nearly orthogonal between layers. **Cross-layer cache factorisation is ruled out** as a compression scheme on Gemma 4 — the only path to additional KV memory savings is per-layer (rank truncation calibrated on activations, or per-token / per-channel quantization as already discussed).
+
+This dovetails with the earlier finding: combined with the sharp Q-subspace discontinuity at the layer-15 KV-share boundary, it means both the *weights* and the *activations* of different layers are pulling on genuinely different directions. The model uses depth to access different parts of representation space, not to refine the same directions over and over. That's bad news for compression schemes that bet on cross-layer redundancy, and good news for understanding what the model is actually doing with its depth.
+
+<span style="display:block; height: 0px;"></span>
+
 ## Opportunities for compression
 
 The RMT lens collapses three observations into a per-role recipe:
 
 | Role | Regime | Recommendation |
 |---|---|---|
-| MLP `up`, `down` | Random-like (α≈5) | Either Gavish-Donoho hard-thresholded SVD, or **spike + sketch**: keep the ~100 signal eigenvalues exactly, replace the MP bulk with a seeded random matrix of matching σ². The bulk is statistically reproducible noise — doesn't need to be stored verbatim. |
+| MLP `up`, `down` | Random-like (α≈5) | Either Gavish-Donoho hard-thresholded SVD, or **spike + sketch**: keep the ~100 signal eigenvalues exactly, replace the MP bulk with a seeded random matrix of matching $\sigma^2$. The bulk is statistically reproducible noise — doesn't need to be stored verbatim. |
 | MLP `gate` | Bulk-and-spikes | Standard rank-truncated SVD around the MP threshold (~75 signal directions). Quantize residuals. |
 | Attention `K`, `O` | Bulk-and-spikes | Same; K is well-suited to **per-token quantization** (KIVI inverted). |
-| Attention `Q`, `V` | Heavy-tailed (HTSR) | **Avoid pure low-rank truncation** — for different reasons. Q has both spikes and a heavy continuum, so any cutoff sacrifices learned directions; V has a smooth power-law tail with no spike/bulk separation, so there's no natural cutoff at all. Use quantization-only or activation-aware decomposition (ASVD/FWSVD). |
+| Attention `Q`, `V` | Heavy-tailed (HTSR) | **Avoid pure low-rank truncation.** No clean noise floor — every cut loses signal. Use quantization-only or activation-aware decomposition (ASVD/FWSVD). |
 | Layer 14 (especially Q, gate, up) | Most-trained | Reserve highest precision; do not aggressively reduce rank. |
 | RMSNorm weights | Outlier-heavy | Keep in bf16/fp16. They cost nothing. |
-| KV cache (V) | Shannon eff-rank ~55–62% of head_dim; ~15–40 signal eigenvalues above MP edge | Low-rank gain achievable, but calibrate on activations and pick the cut by reconstruction-error sweep. |
-| KV cache (K) | Token-aligned outliers | Per-token quantization (against KIVI's published recipe). |
+| KV cache (V) | Shannon eff-rank ~55–62% of head_dim; ~15–40 signal eigenvalues above MP edge; **no cross-layer overlap** | Per-layer rank truncation calibrated on activations; reconstruction-error sweep to pick the cut. Cross-layer factorisation does not work. |
+| KV cache (K) | Token-aligned outliers; **no cross-layer overlap** | Per-token quantization (against KIVI's published recipe). Cross-layer factorisation does not work. |
 
+Two specific experiments would close the loop:
+1. **Spike + sketch on a representative MLP up/down** — pick one layer, factor out the top-100 eigenpairs, replace the bulk with a seeded random matrix of the right scale, measure end-to-end loss change. The MP fit is clean enough that this should *almost* work without finetuning.
+2. **HTSR quality control** — fit α at every layer, refuse low-rank for any matrix with α < 4. This is a 100-line guard rail against destroying training signal in heavy-tailed weights.
+
+<span style="display:block; height: 0px;"></span>
+
+## TL;DR
+
+Five findings:
+
+1. **Weights are near-Gaussian**. The exception is RMSNorm scale — outliers reaching ×900 — keep those in full precision regardless of what you do to projections.
+
+2. **Three spectral regimes**. MLP `up`/`down` are random-like (5–7% of eigenvalues above the noise floor, carrying 15-19% of energy). `gate`, `K`, `O` have a clean MP bulk plus moderate signal (23–29% signal energy). `Q` and `V` are heavy-tailed but differently: Q's bulk is deformed — 12% of eigenvalues fall *below* the MP lower edge, where the law predicts zero; V's bulk respects the MP boundary but carries a handful of extreme outliers (top eigenvalue 7× the noise floor on average).
+
+3. **Layer 14** is the most-trained layer for Q, gate, and up simultaneously. Reserve highest precision here.
+
+4. **KV cache**. K outliers are token-aligned, not channel-aligned as KIVI assumes — per-token K quantization is correct for this model. V's weight spectrum is a misleading proxy for cache compressibility: V activations span 55–62% of head_dim at runtime despite the weight's low stable rank (~23). Calibrate on activations, not weights.
+
+5. **No cross-layer sharing**. Q subspaces are orthogonal across the layer-15 KV-share boundary (mean cos² at the random baseline 0.042). K and V caches are similarly orthogonal across layers — cross-layer factorisation is ruled out.
 
 <span style="display:block; height: 0px;"></span>
